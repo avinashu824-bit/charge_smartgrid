@@ -91,14 +91,14 @@ export default function LoginPage() {
           <div className="flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <p className="text-emerald-300 text-sm">
-              <span className="font-semibold">BESCOM Zone B</span> — All systems operational
+              <span className="font-semibold">DISCOM Zone B</span> — All systems operational
             </p>
           </div>
         </div>
 
         <div className="relative z-10">
           <p className="text-slate-500 text-xs">
-            Powered by ChargeSmart AI · BESCOM Licensed · v2.4.1
+            Powered by ChargeSmart AI · DISCOM Licensed · v2.4.1
           </p>
         </div>
       </div>
@@ -200,7 +200,7 @@ export default function LoginPage() {
           </div>
 
           <p className="text-center text-xs text-gray-400 mt-6">
-            © 2025 ChargeSmart Grid · Licensed under BESCOM EV Framework
+            © 2025 ChargeSmart Grid · Licensed under DISCOM EV Framework
           </p>
         </div>
       </div>

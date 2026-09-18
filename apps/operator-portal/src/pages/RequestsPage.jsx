@@ -40,7 +40,7 @@ export default function RequestsPage() {
   const [approvals, setApprovals] = useState(STATION_APPROVALS);
 
   const submitUpgrade = () => {
-    alert('Upgrade request submitted to BESCOM Discom Admin. You will be notified within 48 hours.');
+    alert('Upgrade request submitted to DISCOM Discom Admin. You will be notified within 48 hours.');
   };
 
   return (
@@ -115,7 +115,7 @@ export default function RequestsPage() {
               )}
               {req.status === 'APPROVED' && (
                 <div className="mt-3 pt-3 border-t border-gray-800">
-                  <p className="text-xs text-emerald-400">✓ BESCOM approved. Upgrade scheduled Q2 2024.</p>
+                  <p className="text-xs text-emerald-400">✓ DISCOM approved. Upgrade scheduled Q2 2024.</p>
                 </div>
               )}
             </div>
