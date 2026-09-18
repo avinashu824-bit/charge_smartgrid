@@ -9,15 +9,12 @@ import getSocket from '../utils/socket.js';
 
 const FILTER_OPTS = ['All', 'Available', 'Cheap (<₹10)', 'Fast DC (>22kW)'];
 
-// Drawer states: 'closed' = only handle visible, 'peek' = ~35% height, 'open' = 65% height
-const DRAWER_HEIGHT = { closed: 0, peek: '38vh', open: '65vh' };
-
 export default function MapPage() {
   const navigate = useNavigate();
   const [stations, setStations] = useState(MOCK_STATIONS);
   const [selected, setSelected] = useState(null);
-  // Start as 'peek' so the station list is partially visible but map is still shown
-  const [drawerState, setDrawerState] = useState('peek');
+  // Start as 'closed' — only a tiny 52px strip shows at the bottom
+  const [drawerState, setDrawerState] = useState('closed');
   const [nudgeDismissed, setNudgeDismissed] = useState(false);
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
@@ -97,7 +94,7 @@ export default function MapPage() {
     dragStartY.current = null;
   };
 
-  const drawerHeight = drawerState === 'closed' ? '44px' : drawerState === 'peek' ? '38vh' : '65vh';
+  const drawerHeight = drawerState === 'closed' ? '52px' : drawerState === 'peek' ? '38vh' : '65vh';
 
   return (
     <div className="flex-1 flex flex-col relative overflow-hidden">
@@ -159,14 +156,19 @@ export default function MapPage() {
       >
         {/* Drag handle — always visible, clickable to toggle */}
         <div
-          className="flex justify-center items-center pt-3 pb-2 cursor-pointer select-none"
+          className="flex justify-center items-center gap-3 pt-2 pb-2 cursor-pointer select-none"
           onClick={toggleDrawer}
         >
           <div className="w-10 h-1 bg-neutral-600 rounded-full" />
+          {drawerState === 'closed' && (
+            <span className="text-xs text-neutral-400 font-medium">
+              {sorted.filter(s => s.status === 'GREEN').length} stations available · tap to view
+            </span>
+          )}
         </div>
 
-        {/* Cheapest nearby quick bar — shown in peek/closed states */}
-        {cheapestStation && drawerState !== 'open' && (
+        {/* Cheapest nearby quick bar — shown only in peek state */}
+        {cheapestStation && drawerState === 'peek' && (
           <div className="mx-4 mb-3 bg-neutral-800 rounded-2xl p-3 flex items-center justify-between">
             <div>
               <p className="text-xs text-neutral-400">Cheapest nearby</p>
