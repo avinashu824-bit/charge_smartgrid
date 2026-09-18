@@ -16,7 +16,7 @@ export default function App() {
   const { user } = useAuth();
   return (
     <BrowserRouter>
-      <div className="h-screen flex flex-col bg-gray-950 text-white overflow-hidden">
+      <div className="h-screen flex flex-col bg-neutral-950 text-white overflow-hidden">
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={

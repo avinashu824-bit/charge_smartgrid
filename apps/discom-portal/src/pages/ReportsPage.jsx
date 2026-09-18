@@ -64,22 +64,22 @@ export default function ReportsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Grid Stress Reports</h1>
-          <p className="text-gray-400 text-sm mt-1">City-wide transformer analytics and forecasts</p>
+          <p className="text-slate-400 text-sm mt-1">City-wide transformer analytics and forecasts</p>
         </div>
         <div className="flex gap-3">
           <button onClick={() => window.print()}
-            className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-200 text-sm font-medium px-4 py-2.5 rounded-xl border border-gray-700 transition-all">
+            className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium px-4 py-2.5 rounded-xl border border-slate-700 transition-all">
             <FileText size={15} /> Download PDF
           </button>
           <button onClick={downloadCSV}
-            className="flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-all">
+            className="flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-all">
             <Download size={15} /> Download CSV
           </button>
         </div>
       </div>
 
       {/* City load trend */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <h2 className="font-semibold text-white mb-4">City-Wide Load — Last 30 Days</h2>
         <ResponsiveContainer width="100%" height={200}>
           <AreaChart data={CITY_TREND} margin={{ top: 4, right: 12, left: -10, bottom: 0 }}>
@@ -100,7 +100,7 @@ export default function ReportsPage() {
 
       <div className="grid grid-cols-2 gap-6">
         {/* Zone utilization */}
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
           <h2 className="font-semibold text-white mb-4">Zone Utilization (%)</h2>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={ZONE_UTIL} margin={{ top: 4, right: 12, left: -20, bottom: 0 }}>
@@ -115,7 +115,7 @@ export default function ReportsPage() {
         </div>
 
         {/* RED history */}
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
           <h2 className="font-semibold text-white mb-4">RED Transformers — Last 14 Days</h2>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={RED_HISTORY} margin={{ top: 4, right: 12, left: -20, bottom: 0 }}>
@@ -129,7 +129,7 @@ export default function ReportsPage() {
       </div>
 
       {/* 7-day zone forecast */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <h2 className="font-semibold text-white mb-4">7-Day Zone Load Forecast (MW)</h2>
         <ResponsiveContainer width="100%" height={220}>
           <LineChart margin={{ top: 4, right: 12, left: -10, bottom: 0 }}>
@@ -146,12 +146,12 @@ export default function ReportsPage() {
       </div>
 
       {/* Transformer table */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-white">All Transformers ({filteredT.length})</h2>
           <div className="flex gap-2">
             <select value={zoneFilter} onChange={e => setZoneFilter(e.target.value)}
-              className="bg-gray-800 border border-gray-700 text-sm text-gray-200 rounded-lg px-3 py-1.5">
+              className="bg-slate-800 border border-slate-700 text-sm text-slate-200 rounded-lg px-3 py-1.5">
               <option value="ALL">All Zones</option>
               {MOCK_ZONES.map(z => <option key={z.id} value={z.name}>{z.name}</option>)}
             </select>
@@ -162,8 +162,8 @@ export default function ReportsPage() {
                     ? s === 'RED' ? 'bg-red-900/60 border-red-700 text-red-400'
                       : s === 'YELLOW' ? 'bg-amber-900/60 border-amber-700 text-amber-400'
                       : s === 'GREEN' ? 'bg-emerald-900/60 border-emerald-700 text-emerald-400'
-                      : 'bg-gray-700 border-gray-600 text-white'
-                    : 'bg-gray-800 border-gray-700 text-gray-400'
+                      : 'bg-slate-700 border-slate-600 text-white'
+                    : 'bg-slate-800 border-slate-700 text-slate-400'
                 }`}>
                 {s}
               </button>
@@ -174,7 +174,7 @@ export default function ReportsPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-gray-400 border-b border-gray-800 text-xs">
+              <tr className="text-slate-400 border-b border-slate-800 text-xs">
                 <th className="text-left pb-3">Feeder</th>
                 <th className="text-left pb-3">Name</th>
                 <th className="text-left pb-3">Zone</th>
@@ -184,24 +184,24 @@ export default function ReportsPage() {
                 <th className="text-left pb-3">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-800/50">
+            <tbody className="divide-y divide-slate-800/50">
               {filteredT.slice(0, 20).map(t => (
-                <tr key={t.id} className="hover:bg-gray-800/40 transition-colors">
-                  <td className="py-2.5 font-mono text-xs text-gray-400">{t.feeder_id}</td>
-                  <td className="py-2.5 text-gray-200 text-xs">{t.name}</td>
-                  <td className="py-2.5 text-gray-400 text-xs">{t.zone_name}</td>
-                  <td className="py-2.5 text-right text-gray-300">{t.capacity_kva}</td>
-                  <td className="py-2.5 text-right text-gray-300">{t.current_load_kw}</td>
+                <tr key={t.id} className="hover:bg-slate-800/40 transition-colors">
+                  <td className="py-2.5 font-mono text-xs text-slate-400">{t.feeder_id}</td>
+                  <td className="py-2.5 text-slate-200 text-xs">{t.name}</td>
+                  <td className="py-2.5 text-slate-400 text-xs">{t.zone_name}</td>
+                  <td className="py-2.5 text-right text-slate-300">{t.capacity_kva}</td>
+                  <td className="py-2.5 text-right text-slate-300">{t.current_load_kw}</td>
                   <td className="py-2.5 pl-4">
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 bg-gray-800 rounded-full h-1.5 w-24">
+                      <div className="flex-1 bg-slate-800 rounded-full h-1.5 w-24">
                         <div className="h-1.5 rounded-full transition-all"
                           style={{
                             width: `${Math.min(100, t.stress_score * 100)}%`,
                             background: t.status === 'RED' ? '#EF4444' : t.status === 'YELLOW' ? '#F59E0B' : '#10B981'
                           }} />
                       </div>
-                      <span className="text-xs text-gray-400 w-8">{Math.round(t.stress_score * 100)}%</span>
+                      <span className="text-xs text-slate-400 w-8">{Math.round(t.stress_score * 100)}%</span>
                     </div>
                   </td>
                   <td className="py-2.5">
@@ -216,7 +216,7 @@ export default function ReportsPage() {
             </tbody>
           </table>
           {filteredT.length > 20 && (
-            <p className="text-xs text-gray-500 text-center mt-3">Showing 20 of {filteredT.length}. Download CSV for full list.</p>
+            <p className="text-xs text-slate-500 text-center mt-3">Showing 20 of {filteredT.length}. Download CSV for full list.</p>
           )}
         </div>
       </div>

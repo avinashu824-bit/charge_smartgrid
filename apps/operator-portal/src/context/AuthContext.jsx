@@ -49,8 +49,8 @@ export function AuthProvider({ children }) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gray-50">
-        <div className="animate-spin rounded-full h-10 w-10 border-4 border-emerald-500 border-t-transparent" />
+      <div className="flex items-center justify-center h-screen bg-zinc-50">
+        <div className="animate-spin rounded-full h-10 w-10 border-4 border-amber-500 border-t-transparent" />
       </div>
     )
   }

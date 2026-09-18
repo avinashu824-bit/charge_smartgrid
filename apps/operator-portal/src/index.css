@@ -19,15 +19,15 @@
   }
 
   .sidebar-link {
-    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200 font-medium text-sm;
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-400 hover:text-white hover:bg-white/10 transition-all duration-200 font-medium text-sm;
   }
 
   .sidebar-link.active {
-    @apply bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+    @apply bg-amber-500/20 text-amber-400 border border-amber-500/30;
   }
 
   .kpi-card {
-    @apply bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200;
+    @apply bg-white rounded-2xl p-6 shadow-sm border border-zinc-100 hover:shadow-md transition-shadow duration-200;
   }
 
   .status-badge {
@@ -35,11 +35,11 @@
   }
 
   .btn-primary {
-    @apply bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-200 text-sm;
+    @apply bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-200 text-sm;
   }
 
   .btn-secondary {
-    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg transition-colors duration-200 text-sm;
+    @apply bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-semibold px-4 py-2 rounded-lg transition-colors duration-200 text-sm;
   }
 
   .btn-danger {
@@ -47,11 +47,11 @@
   }
 
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-gray-100;
+    @apply bg-white rounded-2xl shadow-sm border border-zinc-100;
   }
 
   .input-field {
-    @apply border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200;
+    @apply border border-zinc-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200;
   }
 }
 

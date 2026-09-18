@@ -19,7 +19,7 @@ function ProtectedRoute({ children }) {
 
 function AppLayout({ children }) {
   return (
-    <div className="flex h-screen bg-[#0A0F1E] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.15),rgba(255,255,255,0))] overflow-hidden">
+    <div className="flex h-screen bg-[#09090b] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.15),rgba(255,255,255,0))] overflow-hidden">
       <Sidebar />
       <main className="flex-1 overflow-y-auto">
         {children}

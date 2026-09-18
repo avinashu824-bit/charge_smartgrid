@@ -17,9 +17,9 @@ const initialStations = [
 
 function StatusBadge({ status }) {
   const map = {
-    active:      { cls: 'bg-emerald-100 text-emerald-700 border-emerald-200', dot: 'bg-emerald-500', label: 'Active', pulse: true },
-    offline:     { cls: 'bg-gray-100 text-gray-500 border-gray-200',          dot: 'bg-gray-400',    label: 'Offline', pulse: false },
-    maintenance: { cls: 'bg-amber-100 text-amber-700 border-amber-200',       dot: 'bg-amber-500',   label: 'Maintenance', pulse: false },
+    active:      { cls: 'bg-amber-100 text-amber-700 border-amber-200', dot: 'bg-amber-500', label: 'Active', pulse: true },
+    offline:     { cls: 'bg-zinc-100 text-zinc-500 border-zinc-200',          dot: 'bg-zinc-400',    label: 'Offline', pulse: false },
+    maintenance: { cls: 'bg-orange-100 text-orange-700 border-orange-200',       dot: 'bg-orange-500',   label: 'Maintenance', pulse: false },
   }
   const s = map[status] || map.offline
   return (
@@ -39,52 +39,52 @@ function CouponModal({ station, onClose, onApply }) {
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-100">
           <div>
-            <h3 className="font-bold text-gray-900">Set Coupon Code</h3>
-            <p className="text-xs text-gray-400 mt-0.5">{station.name}</p>
+            <h3 className="font-bold text-zinc-900">Set Coupon Code</h3>
+            <p className="text-xs text-zinc-400 mt-0.5">{station.name}</p>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-zinc-400 hover:text-zinc-600">
             <X size={20} />
           </button>
         </div>
         <div className="p-6 space-y-5">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Discount Percentage</label>
+            <label className="block text-sm font-semibold text-zinc-700 mb-2">Discount Percentage</label>
             <div className="flex items-center gap-4">
               <input
                 type="range" min="5" max="40" step="5"
                 value={discount}
                 onChange={(e) => setDiscount(Number(e.target.value))}
-                className="flex-1 accent-emerald-500"
+                className="flex-1 accent-amber-500"
               />
-              <span className="w-14 text-center font-bold text-emerald-600 text-lg">{discount}%</span>
+              <span className="w-14 text-center font-bold text-amber-600 text-lg">{discount}%</span>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Valid From</label>
+              <label className="block text-sm font-semibold text-zinc-700 mb-2">Valid From</label>
               <input type="time" value={hours} onChange={(e) => setHours(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                className="w-full border border-zinc-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Valid Until</label>
+              <label className="block text-sm font-semibold text-zinc-700 mb-2">Valid Until</label>
               <input type="time" value={endHours} onChange={(e) => setEndHours(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                className="w-full border border-zinc-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
             </div>
           </div>
-          <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-4">
-            <p className="text-xs text-emerald-600 font-medium mb-1">Preview Coupon</p>
+          <div className="bg-amber-50 border border-amber-100 rounded-xl p-4">
+            <p className="text-xs text-amber-600 font-medium mb-1">Preview Coupon</p>
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-bold text-emerald-800 text-lg font-mono tracking-wider">{code}</p>
-                <p className="text-xs text-emerald-600 mt-0.5">{discount}% off · {hours}–{endHours}</p>
+                <p className="font-bold text-amber-800 text-lg font-mono tracking-wider">{code}</p>
+                <p className="text-xs text-amber-600 mt-0.5">{discount}% off · {hours}–{endHours}</p>
               </div>
               <div className="text-right">
-                <p className="text-sm font-bold text-emerald-700">
+                <p className="text-sm font-bold text-amber-700">
                   {'\u20b9'}{(station.price * (1 - discount / 100)).toFixed(1)}/kWh
                 </p>
-                <p className="text-xs text-gray-400 line-through">{'\u20b9'}{station.price}/kWh</p>
+                <p className="text-xs text-zinc-400 line-through">{'\u20b9'}{station.price}/kWh</p>
               </div>
             </div>
           </div>
@@ -95,10 +95,10 @@ function CouponModal({ station, onClose, onApply }) {
           </div>
         </div>
         <div className="flex gap-3 px-6 pb-6">
-          <button onClick={onClose} className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 rounded-xl transition-colors text-sm">
+          <button onClick={onClose} className="flex-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-semibold py-2.5 rounded-xl transition-colors text-sm">
             Cancel
           </button>
-          <button onClick={() => onApply(code)} className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2.5 rounded-xl transition-colors text-sm">
+          <button onClick={() => onApply(code)} className="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 rounded-xl transition-colors text-sm">
             Publish Coupon
           </button>
         </div>
@@ -148,11 +148,11 @@ export default function StationsPage() {
   }
 
   return (
-    <div className="p-8 min-h-screen bg-gray-50">
+    <div className="p-8 min-h-screen bg-zinc-50">
       {/* Toast */}
       {toast && (
         <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-xl shadow-lg text-white text-sm font-semibold flex items-center gap-2 slide-in ${
-          toast.type === 'success' ? 'bg-emerald-600' : 'bg-red-600'
+          toast.type === 'success' ? 'bg-amber-600' : 'bg-red-600'
         }`}>
           <Check size={16} />
           {toast.msg}
@@ -168,21 +168,21 @@ export default function StationsPage() {
       )}
 
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Station Manager</h1>
-        <p className="text-sm text-gray-500 mt-1">Manage all EV charging stations across Bengaluru zones</p>
+        <h1 className="text-2xl font-bold text-zinc-900">Station Manager</h1>
+        <p className="text-sm text-zinc-500 mt-1">Manage all EV charging stations across Bengaluru zones</p>
       </div>
 
       {/* Stats Row */}
       <div className="grid grid-cols-4 gap-4 mb-6">
         {[
-          { label: 'Total Stations', value: stations.length, color: 'text-gray-900' },
-          { label: 'Active', value: stations.filter(s => s.status === 'active').length, color: 'text-emerald-600' },
-          { label: 'Offline', value: stations.filter(s => s.status === 'offline').length, color: 'text-gray-500' },
-          { label: 'Maintenance', value: stations.filter(s => s.status === 'maintenance').length, color: 'text-amber-600' },
+          { label: 'Total Stations', value: stations.length, color: 'text-zinc-900' },
+          { label: 'Active', value: stations.filter(s => s.status === 'active').length, color: 'text-amber-600' },
+          { label: 'Offline', value: stations.filter(s => s.status === 'offline').length, color: 'text-zinc-500' },
+          { label: 'Maintenance', value: stations.filter(s => s.status === 'maintenance').length, color: 'text-orange-600' },
         ].map((stat) => (
-          <div key={stat.label} className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
+          <div key={stat.label} className="bg-white rounded-xl p-4 border border-zinc-100 shadow-sm text-center">
             <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
-            <p className="text-xs text-gray-400 mt-1">{stat.label}</p>
+            <p className="text-xs text-zinc-400 mt-1">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -190,13 +190,13 @@ export default function StationsPage() {
       {/* Search & Filter */}
       <div className="flex items-center gap-3 mb-5">
         <div className="relative flex-1 max-w-md">
-          <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+          <Search size={15} className="absolute left-3.5 top-1/2 -tranzinc-y-1/2 text-zinc-400" />
           <input
             type="text"
             placeholder="Search stations, zones..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+            className="w-full pl-9 pr-4 py-2.5 border border-zinc-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
           />
         </div>
         <div className="flex items-center gap-2">
@@ -206,8 +206,8 @@ export default function StationsPage() {
               onClick={() => setStatusFilter(f)}
               className={`px-3 py-2 rounded-lg text-xs font-semibold capitalize transition-all ${
                 statusFilter === f
-                  ? 'bg-emerald-500 text-white shadow-sm'
-                  : 'bg-white border border-gray-200 text-gray-600 hover:border-emerald-300'
+                  ? 'bg-amber-500 text-white shadow-sm'
+                  : 'bg-white border border-zinc-200 text-zinc-600 hover:border-amber-300'
               }`}
             >
               {f}
@@ -217,46 +217,46 @@ export default function StationsPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-100 bg-gray-50/50">
-                <th className="text-left text-xs font-semibold text-gray-500 px-5 py-3.5 uppercase tracking-wide">Station</th>
-                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3.5 uppercase tracking-wide">Zone / Feeder</th>
-                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3.5 uppercase tracking-wide">Status</th>
-                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3.5 uppercase tracking-wide">kW Load</th>
-                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3.5 uppercase tracking-wide">Slots Free</th>
-                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3.5 uppercase tracking-wide">Price/kWh</th>
-                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3.5 uppercase tracking-wide">Actions</th>
+              <tr className="border-b border-zinc-100 bg-zinc-50/50">
+                <th className="text-left text-xs font-semibold text-zinc-500 px-5 py-3.5 uppercase tracking-wide">Station</th>
+                <th className="text-left text-xs font-semibold text-zinc-500 px-4 py-3.5 uppercase tracking-wide">Zone / Feeder</th>
+                <th className="text-left text-xs font-semibold text-zinc-500 px-4 py-3.5 uppercase tracking-wide">Status</th>
+                <th className="text-left text-xs font-semibold text-zinc-500 px-4 py-3.5 uppercase tracking-wide">kW Load</th>
+                <th className="text-left text-xs font-semibold text-zinc-500 px-4 py-3.5 uppercase tracking-wide">Slots Free</th>
+                <th className="text-left text-xs font-semibold text-zinc-500 px-4 py-3.5 uppercase tracking-wide">Price/kWh</th>
+                <th className="text-left text-xs font-semibold text-zinc-500 px-4 py-3.5 uppercase tracking-wide">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-50">
+            <tbody className="divide-y divide-zinc-50">
               {filtered.map((station) => (
-                <tr key={station.id} className="hover:bg-gray-50/50 transition-colors">
+                <tr key={station.id} className="hover:bg-zinc-50/50 transition-colors">
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                        station.status === 'active' ? 'bg-emerald-100' :
-                        station.status === 'offline' ? 'bg-gray-100' : 'bg-amber-100'
+                        station.status === 'active' ? 'bg-amber-100' :
+                        station.status === 'offline' ? 'bg-zinc-100' : 'bg-orange-100'
                       }`}>
                         <Plug size={14} className={
-                          station.status === 'active' ? 'text-emerald-500' :
-                          station.status === 'offline' ? 'text-gray-400' : 'text-amber-500'
+                          station.status === 'active' ? 'text-amber-500' :
+                          station.status === 'offline' ? 'text-zinc-400' : 'text-orange-500'
                         } />
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-gray-900">{station.name}</p>
-                        <p className="text-xs text-gray-400">{station.type}</p>
+                        <p className="text-sm font-semibold text-zinc-900">{station.name}</p>
+                        <p className="text-xs text-zinc-400">{station.type}</p>
                       </div>
                     </div>
                   </td>
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-1.5">
-                      <MapPin size={12} className="text-gray-400" />
+                      <MapPin size={12} className="text-zinc-400" />
                       <div>
-                        <p className="text-sm text-gray-700 font-medium">{station.zone}</p>
-                        <p className="text-xs text-gray-400">Feeder {station.feeder}</p>
+                        <p className="text-sm text-zinc-700 font-medium">{station.zone}</p>
+                        <p className="text-xs text-zinc-400">Feeder {station.feeder}</p>
                       </div>
                     </div>
                   </td>
@@ -265,46 +265,46 @@ export default function StationsPage() {
                   </td>
                   <td className="px-4 py-4">
                     <div>
-                      <span className="text-sm font-semibold text-gray-900">{station.load} kW</span>
-                      <div className="w-24 bg-gray-100 rounded-full h-1.5 mt-1">
+                      <span className="text-sm font-semibold text-zinc-900">{station.load} kW</span>
+                      <div className="w-24 bg-zinc-100 rounded-full h-1.5 mt-1">
                         <div
-                          className={`h-1.5 rounded-full ${station.load > 50 ? 'bg-red-400' : station.load > 30 ? 'bg-amber-400' : 'bg-emerald-400'}`}
+                          className={`h-1.5 rounded-full ${station.load > 50 ? 'bg-red-400' : station.load > 30 ? 'bg-orange-400' : 'bg-amber-400'}`}
                           style={{ width: `${Math.min((station.load / 75) * 100, 100)}%` }}
                         />
                       </div>
                     </div>
                   </td>
                   <td className="px-4 py-4">
-                    <span className={`text-sm font-semibold ${station.slots === 0 ? 'text-red-500' : 'text-emerald-600'}`}>
+                    <span className={`text-sm font-semibold ${station.slots === 0 ? 'text-red-500' : 'text-amber-600'}`}>
                       {station.slots}/{station.totalSlots}
                     </span>
-                    <p className="text-xs text-gray-400">{station.slots === 0 ? 'Full' : 'Available'}</p>
+                    <p className="text-xs text-zinc-400">{station.slots === 0 ? 'Full' : 'Available'}</p>
                   </td>
                   <td className="px-4 py-4">
                     {editingPrice === station.id ? (
                       <div className="flex items-center gap-1.5">
-                        <span className="text-gray-400 text-sm">{'\u20b9'}</span>
+                        <span className="text-zinc-400 text-sm">{'\u20b9'}</span>
                         <input
                           type="number"
                           value={tempPrice}
                           onChange={(e) => setTempPrice(e.target.value)}
-                          className="w-16 border border-emerald-300 rounded-lg px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                          className="w-16 border border-amber-300 rounded-lg px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
                           autoFocus
                           onKeyDown={(e) => { if (e.key === 'Enter') savePrice(station.id); if (e.key === 'Escape') setEditingPrice(null) }}
                         />
-                        <button onClick={() => savePrice(station.id)} className="text-emerald-500 hover:text-emerald-700">
+                        <button onClick={() => savePrice(station.id)} className="text-amber-500 hover:text-amber-700">
                           <Check size={14} />
                         </button>
-                        <button onClick={() => setEditingPrice(null)} className="text-gray-400 hover:text-gray-600">
+                        <button onClick={() => setEditingPrice(null)} className="text-zinc-400 hover:text-zinc-600">
                           <X size={14} />
                         </button>
                       </div>
                     ) : (
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-gray-900">{'\u20b9'}{station.price}/kWh</span>
+                        <span className="text-sm font-bold text-zinc-900">{'\u20b9'}{station.price}/kWh</span>
                         <button
                           onClick={() => startEditPrice(station)}
-                          className="text-gray-300 hover:text-emerald-500 transition-colors"
+                          className="text-zinc-300 hover:text-amber-500 transition-colors"
                         >
                           <Edit2 size={13} />
                         </button>
@@ -325,7 +325,7 @@ export default function StationsPage() {
             </tbody>
           </table>
           {filtered.length === 0 && (
-            <div className="py-16 text-center text-gray-400">
+            <div className="py-16 text-center text-zinc-400">
               <Plug size={36} className="mx-auto mb-3 opacity-30" />
               <p className="font-medium">No stations found</p>
               <p className="text-xs mt-1">Try adjusting your search or filter</p>

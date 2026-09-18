@@ -7,7 +7,7 @@ export default function AlertBanner({ feeder_id, message, severity = 'high', tim
 
   const config = {
     high:   { bg: 'bg-red-500',    border: 'border-red-400',    icon: Zap,           text: 'text-white' },
-    medium: { bg: 'bg-amber-500',  border: 'border-amber-400',  icon: AlertTriangle, text: 'text-white' },
+    medium: { bg: 'bg-orange-500',  border: 'border-orange-400',  icon: AlertTriangle, text: 'text-white' },
     low:    { bg: 'bg-blue-500',   border: 'border-blue-400',   icon: Info,          text: 'text-white' },
   }
   const { bg, border, icon: Icon, text } = config[severity] || config.high

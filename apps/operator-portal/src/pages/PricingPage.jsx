@@ -38,34 +38,34 @@ export default function PricingPage() {
     <div className="p-6 max-w-5xl mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-white">Pricing Studio</h1>
-        <p className="text-gray-400 text-sm mt-1">Manage time-of-day pricing and off-peak incentives</p>
+        <p className="text-zinc-400 text-sm mt-1">Manage time-of-day pricing and off-peak incentives</p>
       </div>
 
       {/* Platform Suggestion Card */}
-      <div className="bg-amber-950/40 border border-amber-700/50 rounded-2xl p-5">
+      <div className="bg-orange-950/40 border border-orange-700/50 rounded-2xl p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-2">
-            <Zap size={18} className="text-amber-400" />
-            <span className="font-semibold text-amber-300">Platform Price Suggestion</span>
+            <Zap size={18} className="text-orange-400" />
+            <span className="font-semibold text-orange-300">Platform Price Suggestion</span>
           </div>
           {suggestionStatus === 'approved' && (
-            <span className="text-xs bg-emerald-900/60 text-emerald-400 border border-emerald-700 px-3 py-1 rounded-full">✓ Approved</span>
+            <span className="text-xs bg-amber-900/60 text-amber-400 border border-amber-700 px-3 py-1 rounded-full">✓ Approved</span>
           )}
           {suggestionStatus === 'rejected' && (
             <span className="text-xs bg-red-900/60 text-red-400 border border-red-700 px-3 py-1 rounded-full">✗ Rejected</span>
           )}
         </div>
-        <p className="text-sm text-gray-300 mb-1">
-          Raise price to <span className="text-amber-400 font-bold">₹{SUGGESTION.suggested}/kWh</span> during <strong>{SUGGESTION.period}</strong>
+        <p className="text-sm text-zinc-300 mb-1">
+          Raise price to <span className="text-orange-400 font-bold">₹{SUGGESTION.suggested}/kWh</span> during <strong>{SUGGESTION.period}</strong>
         </p>
-        <p className="text-xs text-gray-400 mb-4">{SUGGESTION.reason}</p>
+        <p className="text-xs text-zinc-400 mb-4">{SUGGESTION.reason}</p>
         <div className="flex gap-3 mb-4">
-          <div className="bg-gray-800 rounded-xl px-4 py-2 text-center">
-            <p className="text-xs text-gray-400">Est. Load Reduction</p>
-            <p className="text-emerald-400 font-bold">{SUGGESTION.loadReduction}</p>
+          <div className="bg-zinc-800 rounded-xl px-4 py-2 text-center">
+            <p className="text-xs text-zinc-400">Est. Load Reduction</p>
+            <p className="text-amber-400 font-bold">{SUGGESTION.loadReduction}</p>
           </div>
-          <div className="bg-gray-800 rounded-xl px-4 py-2 text-center">
-            <p className="text-xs text-gray-400">Sessions Shifted Off-Peak</p>
+          <div className="bg-zinc-800 rounded-xl px-4 py-2 text-center">
+            <p className="text-xs text-zinc-400">Sessions Shifted Off-Peak</p>
             <p className="text-blue-400 font-bold">{SUGGESTION.offPeakShift}</p>
           </div>
         </div>
@@ -73,11 +73,11 @@ export default function PricingPage() {
           <div className="flex gap-3">
             <button
               onClick={() => setSuggestionStatus('approved')}
-              className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all"
+              className="flex items-center gap-2 bg-amber-600 hover:bg-amber-500 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all"
             >
               <CheckCircle size={16} /> Approve
             </button>
-            <button className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all">
+            <button className="flex items-center gap-2 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all">
               <Edit3 size={16} /> Edit
             </button>
             <button
@@ -91,37 +91,37 @@ export default function PricingPage() {
       </div>
 
       {/* ToD Bands Table */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
         <h2 className="font-semibold text-white mb-4">Current ToD Price Bands</h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-gray-400 border-b border-gray-800">
+              <tr className="text-zinc-400 border-b border-zinc-800">
                 <th className="text-left pb-3">Time Band</th>
                 <th className="text-left pb-3">Hours</th>
                 <th className="text-left pb-3">₹/kWh</th>
                 <th className="text-left pb-3">Discount</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-800">
+            <tbody className="divide-y divide-zinc-800">
               {bands.map((band, i) => (
-                <tr key={i} className="hover:bg-gray-800/50 transition-colors">
+                <tr key={i} className="hover:bg-zinc-800/50 transition-colors">
                   <td className="py-3">
                     <span className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: band.color }} />
                       {band.label}
                     </span>
                   </td>
-                  <td className="py-3 text-gray-300">{band.start} – {band.end}</td>
+                  <td className="py-3 text-zinc-300">{band.start} – {band.end}</td>
                   <td className="py-3">
                     <span className="font-bold" style={{ color: band.color }}>₹{band.price}</span>
                   </td>
                   <td className="py-3">
                     {band.discount > 0 ? (
-                      <span className="bg-emerald-900/40 text-emerald-400 border border-emerald-800/50 rounded-full px-2 py-0.5 text-xs">
+                      <span className="bg-amber-900/40 text-amber-400 border border-amber-800/50 rounded-full px-2 py-0.5 text-xs">
                         {band.discount}% off
                       </span>
-                    ) : <span className="text-gray-600">—</span>}
+                    ) : <span className="text-zinc-600">—</span>}
                   </td>
                 </tr>
               ))}
@@ -131,7 +131,7 @@ export default function PricingPage() {
       </div>
 
       {/* 24h Price Curve */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
         <h2 className="font-semibold text-white mb-4">24-Hour Price Curve</h2>
         <ResponsiveContainer width="100%" height={200}>
           <AreaChart data={priceCurve} margin={{ top: 4, right: 12, left: -10, bottom: 0 }}>
@@ -153,45 +153,45 @@ export default function PricingPage() {
       </div>
 
       {/* Quick Coupon Generator */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
         <h2 className="font-semibold text-white mb-4">Off-Peak Coupon Generator</h2>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-xs text-gray-400 mb-1.5">Valid Window</label>
+            <label className="block text-xs text-zinc-400 mb-1.5">Valid Window</label>
             <div className="flex items-center gap-2">
               <input type="time" value={couponWindow.start}
                 onChange={e => setCouponWindow(p => ({...p, start: e.target.value}))}
-                className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm flex-1" />
-              <span className="text-gray-500 text-sm">to</span>
+                className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-white text-sm flex-1" />
+              <span className="text-zinc-500 text-sm">to</span>
               <input type="time" value={couponWindow.end}
                 onChange={e => setCouponWindow(p => ({...p, end: e.target.value}))}
-                className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm flex-1" />
+                className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-white text-sm flex-1" />
             </div>
           </div>
           <div>
-            <label className="block text-xs text-gray-400 mb-1.5">Discount: <span className="text-emerald-400 font-bold">{discount}%</span></label>
+            <label className="block text-xs text-zinc-400 mb-1.5">Discount: <span className="text-amber-400 font-bold">{discount}%</span></label>
             <input type="range" min={5} max={50} step={5} value={discount}
               onChange={e => setDiscount(Number(e.target.value))}
-              className="w-full accent-emerald-500 mt-2" />
+              className="w-full accent-amber-500 mt-2" />
           </div>
         </div>
 
-        <div className="bg-gray-800 rounded-xl p-3 mb-4">
-          <p className="text-xs text-gray-400">Preview</p>
+        <div className="bg-zinc-800 rounded-xl p-3 mb-4">
+          <p className="text-xs text-zinc-400">Preview</p>
           <p className="text-sm text-white mt-1">
-            <strong className="text-emerald-400">{discount}% off</strong> from {couponWindow.start} to {couponWindow.end}
+            <strong className="text-amber-400">{discount}% off</strong> from {couponWindow.start} to {couponWindow.end}
             {' '}— ₹{Math.round(12 * (1 - discount/100))}/kWh (was ₹12/kWh)
           </p>
-          <p className="text-xs text-gray-500 mt-1">Est. load shift: +{Math.round(discount * 0.8)}% sessions move to off-peak window</p>
+          <p className="text-xs text-zinc-500 mt-1">Est. load shift: +{Math.round(discount * 0.8)}% sessions move to off-peak window</p>
         </div>
 
         {couponPublished ? (
-          <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium">
+          <div className="flex items-center gap-2 text-amber-400 text-sm font-medium">
             <CheckCircle size={16} /> Coupon published to EV User App!
           </div>
         ) : (
           <button onClick={() => setCouponPublished(true)}
-            className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-all">
+            className="bg-amber-600 hover:bg-amber-500 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-all">
             Publish Coupon to App
           </button>
         )}

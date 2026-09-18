@@ -13,7 +13,7 @@ import { FlaskConical, Play, TrendingUp, AlertTriangle, Zap, ArrowRight } from '
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-[#0F172A] border border-[#1E293B] rounded-xl p-3 text-xs shadow-xl">
+    <div className="bg-[#0f172a] border border-[#1E293B] rounded-xl p-3 text-xs shadow-xl">
       <p className="font-bold text-white mb-1">{label}</p>
       {payload.map(p => (
         <div key={p.name} className="flex items-center gap-2 mb-0.5">
@@ -119,7 +119,7 @@ export default function SimulationPage() {
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {/* ── Header ───────────────────────────────────── */}
-      <div className="flex items-center gap-3 px-6 py-3 border-b border-[#1E293B] bg-[#0F172A] shrink-0">
+      <div className="flex items-center gap-3 px-6 py-3 border-b border-[#1E293B] bg-[#0f172a] shrink-0">
         <FlaskConical className="w-5 h-5 text-purple-400" />
         <div>
           <h1 className="text-base font-bold text-white">EV Growth Simulation Lab</h1>
@@ -128,11 +128,11 @@ export default function SimulationPage() {
       </div>
 
       {/* ── Control Bar ─────────────────────────────── */}
-      <div className="flex items-center gap-6 px-6 py-4 border-b border-[#1E293B] bg-[#0F172A] shrink-0">
+      <div className="flex items-center gap-6 px-6 py-4 border-b border-[#1E293B] bg-[#0f172a] shrink-0">
         <div className="flex-1 max-w-xs">
           <label className="flex items-center justify-between mb-1.5">
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">EV Adoption Growth</span>
-            <span className="text-sm font-bold text-cyan-400">{evGrowth}%</span>
+            <span className="text-sm font-bold text-sky-400">{evGrowth}%</span>
           </label>
           <input type="range" min={0} max={100} step={5} value={evGrowth}
             onChange={e => setEvGrowth(+e.target.value)} />
@@ -144,7 +144,7 @@ export default function SimulationPage() {
         <div className="flex-1 max-w-xs">
           <label className="flex items-center justify-between mb-1.5">
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Months Ahead</span>
-            <span className="text-sm font-bold text-cyan-400">{monthsAhead} mo</span>
+            <span className="text-sm font-bold text-sky-400">{monthsAhead} mo</span>
           </label>
           <input type="range" min={1} max={24} step={1} value={monthsAhead}
             onChange={e => setMonthsAhead(+e.target.value)} />
@@ -187,7 +187,7 @@ export default function SimulationPage() {
           <div ref={mapRef} className="w-full h-full" />
 
           {/* Legend */}
-          <div className="absolute bottom-4 left-4 z-[500] bg-[#0F172A]/90 border border-[#1E293B] rounded-xl p-3 backdrop-blur-sm">
+          <div className="absolute bottom-4 left-4 z-[500] bg-[#0f172a]/90 border border-[#1E293B] rounded-xl p-3 backdrop-blur-sm">
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Legend</div>
             {[
               { label: 'Critical RED', color: '#EF4444' },
@@ -207,8 +207,8 @@ export default function SimulationPage() {
           </div>
 
           {!hasRun && (
-            <div className="absolute inset-0 flex items-center justify-center bg-[#0A0F1E]/50 z-[400]">
-              <div className="text-center p-8 bg-[#0F172A]/90 rounded-2xl border border-[#1E293B] backdrop-blur-sm">
+            <div className="absolute inset-0 flex items-center justify-center bg-[#020617]/50 z-[400]">
+              <div className="text-center p-8 bg-[#0f172a]/90 rounded-2xl border border-[#1E293B] backdrop-blur-sm">
                 <FlaskConical className="w-12 h-12 text-purple-400 mx-auto mb-3" />
                 <h3 className="text-white font-bold text-lg mb-1">Simulation Ready</h3>
                 <p className="text-slate-400 text-sm">Set parameters above and click Run Simulation</p>
@@ -222,12 +222,12 @@ export default function SimulationPage() {
           {/* Summary Banner */}
           {hasRun && simResult && (
             <div className="animate-fade-in">
-              <div className="bg-gradient-to-r from-purple-900/30 to-[#0F172A] border border-purple-500/20 rounded-xl p-4">
+              <div className="bg-gradient-to-r from-purple-900/30 to-[#0f172a] border border-purple-500/20 rounded-xl p-4">
                 <div className="flex items-start gap-3">
                   <TrendingUp className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-white font-semibold text-sm leading-relaxed">
-                      With <span className="text-purple-400">+{evGrowth}% EV growth</span> in <span className="text-cyan-400">{monthsAhead} months</span>,{' '}
+                      With <span className="text-purple-400">+{evGrowth}% EV growth</span> in <span className="text-sky-400">{monthsAhead} months</span>,{' '}
                       <span className="text-red-400 font-bold">{simResult.new_red_count} additional transformers</span> will reach CRITICAL status,
                       requiring <span className="text-amber-400">{simResult.upgrade_capacity_kva} kVA</span> of additional grid capacity.
                     </p>
@@ -244,9 +244,9 @@ export default function SimulationPage() {
           {hasRun && simResult ? (
             <div className="grid grid-cols-2 gap-3 animate-fade-in">
               {/* Current */}
-              <div className="bg-[#0F172A] rounded-xl border border-[#1E293B] p-4">
+              <div className="bg-[#0f172a] rounded-xl border border-[#1E293B] p-4">
                 <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-cyan-400" />
+                  <div className="w-2 h-2 rounded-full bg-sky-400" />
                   CURRENT STATE
                 </div>
                 <div className="space-y-2">
@@ -256,7 +256,7 @@ export default function SimulationPage() {
                 </div>
               </div>
               {/* Projected */}
-              <div className="bg-[#0F172A] rounded-xl border border-purple-500/20 p-4">
+              <div className="bg-[#0f172a] rounded-xl border border-purple-500/20 p-4">
                 <div className="text-xs font-bold text-purple-400 uppercase tracking-widest mb-3 flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-purple-400" />
                   PROJECTED ({monthsAhead}m)
@@ -292,7 +292,7 @@ export default function SimulationPage() {
                 { label: 'Set Months Ahead', icon: '📅', desc: 'Projection time horizon' },
                 { label: 'Run Simulation', icon: '⚡', desc: 'View stress projections' },
               ].map(s => (
-                <div key={s.label} className="bg-[#0F172A] rounded-xl border border-[#1E293B] p-4 text-center">
+                <div key={s.label} className="bg-[#0f172a] rounded-xl border border-[#1E293B] p-4 text-center">
                   <div className="text-2xl mb-2">{s.icon}</div>
                   <div className="text-sm font-semibold text-white mb-1">{s.label}</div>
                   <div className="text-xs text-slate-500">{s.desc}</div>
@@ -303,7 +303,7 @@ export default function SimulationPage() {
 
           {/* Bar Chart */}
           {hasRun && chartData.length > 0 && (
-            <div className="bg-[#0F172A] rounded-xl border border-[#1E293B] p-4 animate-slide-in-up">
+            <div className="bg-[#0f172a] rounded-xl border border-[#1E293B] p-4 animate-slide-in-up">
               <div className="flex items-center gap-2 mb-4">
                 <AlertTriangle className="w-4 h-4 text-amber-400" />
                 <span className="text-sm font-semibold text-white">Top 10 Stressed Transformers — Before vs. After</span>
@@ -330,7 +330,7 @@ export default function SimulationPage() {
 
           {/* Upgrade Recommendations */}
           {hasRun && simResult && simResult.new_red_count > 0 && (
-            <div className="bg-[#0F172A] rounded-xl border border-red-500/20 p-4 animate-fade-in">
+            <div className="bg-[#0f172a] rounded-xl border border-red-500/20 p-4 animate-fade-in">
               <div className="flex items-center gap-2 mb-3">
                 <Zap className="w-4 h-4 text-red-400" />
                 <span className="text-sm font-semibold text-white">Upgrade Recommendations</span>

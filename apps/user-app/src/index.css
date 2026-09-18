@@ -4,7 +4,7 @@
 
 /* Leaflet dark override */
 .leaflet-container {
-  background: #0F172A;
+  background: #171717;
   font-family: 'Inter', sans-serif;
 }
 .map-tiles {
@@ -39,11 +39,11 @@
 
 /* Price ticker */
 .price-ticker {
-  background: linear-gradient(90deg, #0F172A 0%, #1E293B 100%);
+  background: linear-gradient(90deg, #171717 0%, #1E293B 100%);
   border: 1px solid #334155;
 }
 
 /* Status badge */
-.status-green { @apply bg-emerald-500/20 text-emerald-400 border border-emerald-500/30; }
+.status-green { @apply bg-violet-500/20 text-violet-400 border border-violet-500/30; }
 .status-yellow { @apply bg-amber-500/20 text-amber-400 border border-amber-500/30; }
 .status-red { @apply bg-red-500/20 text-red-400 border border-red-500/30; }

@@ -65,17 +65,17 @@ export default function MapPage() {
       {/* Header */}
       <div className="absolute top-0 left-0 right-0 z-[1000] px-4 pt-4 pb-2">
         <div className="flex items-center gap-2">
-          <div className="flex-1 flex items-center bg-gray-900/95 backdrop-blur-sm border border-gray-700 rounded-2xl px-3 py-2.5 gap-2">
-            <Search size={16} className="text-gray-400 flex-shrink-0" />
+          <div className="flex-1 flex items-center bg-neutral-900/95 backdrop-blur-sm border border-neutral-700 rounded-2xl px-3 py-2.5 gap-2">
+            <Search size={16} className="text-neutral-400 flex-shrink-0" />
             <input
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search stations or zones..."
-              className="bg-transparent text-sm text-white placeholder-gray-500 flex-1 outline-none"
+              className="bg-transparent text-sm text-white placeholder-neutral-500 flex-1 outline-none"
             />
           </div>
-          <button className="bg-gray-900/95 backdrop-blur-sm border border-gray-700 rounded-2xl p-2.5">
-            <SlidersHorizontal size={18} className="text-gray-300" />
+          <button className="bg-neutral-900/95 backdrop-blur-sm border border-neutral-700 rounded-2xl p-2.5">
+            <SlidersHorizontal size={18} className="text-neutral-300" />
           </button>
         </div>
 
@@ -87,8 +87,8 @@ export default function MapPage() {
               onClick={() => setActiveFilter(f)}
               className={`flex-shrink-0 text-xs px-3 py-1.5 rounded-full border transition-all ${
                 activeFilter === f
-                  ? 'bg-emerald-500 border-emerald-500 text-white font-medium'
-                  : 'bg-gray-900/90 border-gray-700 text-gray-400'
+                  ? 'bg-violet-500 border-violet-500 text-white font-medium'
+                  : 'bg-neutral-900/90 border-neutral-700 text-neutral-400'
               }`}
             >
               {f}
@@ -107,25 +107,25 @@ export default function MapPage() {
       </div>
 
       {/* Bottom drawer */}
-      <div className={`absolute bottom-0 left-0 right-0 z-[1000] bg-gray-900 rounded-t-3xl shadow-2xl transition-transform duration-300 ${
-        drawerOpen ? 'translate-y-0' : 'translate-y-full'
+      <div className={`absolute bottom-0 left-0 right-0 z-[1000] bg-neutral-900 rounded-t-3xl shadow-2xl transition-transform duration-300 ${
+        drawerOpen ? 'tranneutral-y-0' : 'tranneutral-y-full'
       }`} style={{ maxHeight: '65vh' }}>
         {/* Drag handle */}
         <div className="flex justify-center pt-3 pb-2">
-          <div className="w-10 h-1 bg-gray-600 rounded-full" />
+          <div className="w-10 h-1 bg-neutral-600 rounded-full" />
         </div>
 
         {/* Smart navigation CTA */}
         {cheapestStation && !drawerOpen && (
-          <div className="mx-4 mb-3 bg-gray-800 rounded-2xl p-3 flex items-center justify-between">
+          <div className="mx-4 mb-3 bg-neutral-800 rounded-2xl p-3 flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-400">Cheapest nearby</p>
+              <p className="text-xs text-neutral-400">Cheapest nearby</p>
               <p className="font-semibold text-sm">{cheapestStation.name}</p>
-              <p className="text-xs text-emerald-400">{cheapestStation.distanceKm} km • ₹{cheapestStation.currentPriceInr}/kWh</p>
+              <p className="text-xs text-violet-400">{cheapestStation.distanceKm} km • ₹{cheapestStation.currentPriceInr}/kWh</p>
             </div>
             <button
               onClick={() => handleNavigate(cheapestStation)}
-              className="bg-emerald-500 text-white text-xs font-semibold px-3 py-2 rounded-xl flex items-center gap-1"
+              className="bg-violet-500 text-white text-xs font-semibold px-3 py-2 rounded-xl flex items-center gap-1"
             >
               <Zap size={12} />
               Save ₹{cheapestSavings}
@@ -139,50 +139,50 @@ export default function MapPage() {
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h2 className="font-bold text-lg">{selected.name}</h2>
-                <p className="text-gray-400 text-sm">{selected.address}</p>
+                <p className="text-neutral-400 text-sm">{selected.address}</p>
               </div>
               <button
                 onClick={() => { setDrawerOpen(false); setSelected(null); }}
-                className="text-gray-500 hover:text-white text-xl leading-none ml-2"
+                className="text-neutral-500 hover:text-white text-xl leading-none ml-2"
               >×</button>
             </div>
 
             {/* Key stats */}
             <div className="grid grid-cols-3 gap-3 mb-4">
               {[
-                { label: 'Price', value: `₹${selected.currentPriceInr}/kWh`, color: 'text-emerald-400' },
+                { label: 'Price', value: `₹${selected.currentPriceInr}/kWh`, color: 'text-violet-400' },
                 { label: 'Slots Free', value: `${selected.availableSlots}/${selected.totalSlots}`, color: 'text-blue-400' },
                 { label: 'Wait', value: selected.avgWaitMinutes > 0 ? `~${selected.avgWaitMinutes}m` : 'None', color: 'text-amber-400' },
               ].map(({ label, value, color }) => (
-                <div key={label} className="bg-gray-800 rounded-xl p-3 text-center">
+                <div key={label} className="bg-neutral-800 rounded-xl p-3 text-center">
                   <p className={`font-bold text-sm ${color}`}>{value}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{label}</p>
+                  <p className="text-xs text-neutral-500 mt-0.5">{label}</p>
                 </div>
               ))}
             </div>
 
             {/* Connector types */}
             <div className="mb-4">
-              <p className="text-xs text-gray-400 mb-2">Connectors</p>
+              <p className="text-xs text-neutral-400 mb-2">Connectors</p>
               <div className="flex gap-2">
                 {selected.connectorTypes.map(c => (
-                  <span key={c} className="text-xs bg-gray-800 border border-gray-700 rounded-lg px-2 py-1 text-gray-300">{c}</span>
+                  <span key={c} className="text-xs bg-neutral-800 border border-neutral-700 rounded-lg px-2 py-1 text-neutral-300">{c}</span>
                 ))}
-                <span className="text-xs bg-gray-800 border border-gray-700 rounded-lg px-2 py-1 text-emerald-400">{selected.powerKw} kW</span>
+                <span className="text-xs bg-neutral-800 border border-neutral-700 rounded-lg px-2 py-1 text-violet-400">{selected.powerKw} kW</span>
               </div>
             </div>
 
             {/* Navigate CTA */}
             <button
               onClick={() => handleNavigate(selected)}
-              className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 mb-2 transition-all shadow-lg shadow-emerald-500/30"
+              className="w-full bg-violet-500 hover:bg-violet-400 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 mb-2 transition-all shadow-lg shadow-violet-500/30"
             >
               🧭 Navigate to {selected.name.split(' ').slice(0, 2).join(' ')} — Save ₹{selected.savingsInr}
             </button>
 
             <button
               onClick={() => navigate(`/station/${selected.id}`, { state: { station: selected } })}
-              className="w-full bg-gray-800 hover:bg-gray-700 text-gray-200 font-medium py-3 rounded-xl transition-all"
+              className="w-full bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-medium py-3 rounded-xl transition-all"
             >
               View Full Details →
             </button>
@@ -196,9 +196,9 @@ export default function MapPage() {
             )}
 
             <div className="px-4 mb-2 flex items-center justify-between">
-              <p className="text-xs text-gray-400">{sorted.length} stations nearby</p>
+              <p className="text-xs text-neutral-400">{sorted.length} stations nearby</p>
               <button
-                className="text-xs text-emerald-400 font-medium"
+                className="text-xs text-violet-400 font-medium"
                 onClick={() => setDrawerOpen(true)}
               >
                 See all
@@ -222,9 +222,9 @@ export default function MapPage() {
       {!drawerOpen && (
         <button
           onClick={() => setDrawerOpen(true)}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[999] bg-gray-900 border border-gray-700 rounded-2xl px-6 py-3 text-sm font-medium text-white shadow-xl flex items-center gap-2"
+          className="absolute bottom-4 left-1/2 -tranneutral-x-1/2 z-[999] bg-neutral-900 border border-neutral-700 rounded-2xl px-6 py-3 text-sm font-medium text-white shadow-xl flex items-center gap-2"
         >
-          <Zap size={14} className="text-emerald-400" />
+          <Zap size={14} className="text-violet-400" />
           {sorted.filter(s => s.status === 'GREEN').length} stations available
         </button>
       )}

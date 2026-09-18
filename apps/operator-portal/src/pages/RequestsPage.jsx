@@ -17,8 +17,8 @@ const STATION_APPROVALS = [
 ];
 
 const STATUS_CONFIG = {
-  PENDING: { label: 'Pending', cls: 'bg-amber-900/40 text-amber-400 border-amber-800/50', Icon: Clock },
-  APPROVED: { label: 'Approved', cls: 'bg-emerald-900/40 text-emerald-400 border-emerald-800/50', Icon: CheckCircle },
+  PENDING: { label: 'Pending', cls: 'bg-orange-900/40 text-orange-400 border-orange-800/50', Icon: Clock },
+  APPROVED: { label: 'Approved', cls: 'bg-amber-900/40 text-amber-400 border-amber-800/50', Icon: CheckCircle },
   REJECTED: { label: 'Rejected', cls: 'bg-red-900/40 text-red-400 border-red-800/50', Icon: XCircle },
   UNDER_REVIEW: { label: 'Under Review', cls: 'bg-blue-900/40 text-blue-400 border-blue-800/50', Icon: AlertTriangle },
 };
@@ -47,11 +47,11 @@ export default function RequestsPage() {
     <div className="p-6 max-w-5xl mx-auto">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-white">Requests & Approvals</h1>
-        <p className="text-gray-400 text-sm mt-1">Track upgrade requests and station approval status</p>
+        <p className="text-zinc-400 text-sm mt-1">Track upgrade requests and station approval status</p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 mb-6 border-b border-gray-800 pb-0">
+      <div className="flex gap-2 mb-6 border-b border-zinc-800 pb-0">
         {[
           { key: 'upgrade', label: 'Transformer Upgrades', count: upgrades.filter(r=>r.status==='PENDING').length },
           { key: 'station', label: 'Station Approvals', count: approvals.filter(r=>r.status==='PENDING').length },
@@ -60,12 +60,12 @@ export default function RequestsPage() {
             key={t.key}
             onClick={() => setTab(t.key)}
             className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-all -mb-px flex items-center gap-2 ${
-              tab === t.key ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-gray-400 hover:text-gray-200'
+              tab === t.key ? 'border-amber-500 text-amber-400' : 'border-transparent text-zinc-400 hover:text-zinc-200'
             }`}
           >
             {t.label}
             {t.count > 0 && (
-              <span className="bg-amber-500 text-black text-xs rounded-full px-1.5 py-0.5 font-bold min-w-[18px] text-center">
+              <span className="bg-orange-500 text-black text-xs rounded-full px-1.5 py-0.5 font-bold min-w-[18px] text-center">
                 {t.count}
               </span>
             )}
@@ -78,44 +78,44 @@ export default function RequestsPage() {
           <div className="flex justify-end mb-2">
             <button
               onClick={submitUpgrade}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium px-4 py-2 rounded-xl transition-all flex items-center gap-2"
+              className="bg-amber-600 hover:bg-amber-500 text-white text-sm font-medium px-4 py-2 rounded-xl transition-all flex items-center gap-2"
             >
               + Submit New Upgrade Request
             </button>
           </div>
 
           {upgrades.map(req => (
-            <div key={req.id} className="bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-gray-700 transition-colors">
+            <div key={req.id} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 transition-colors">
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <p className="font-semibold text-white">{req.transformer}
-                    <span className="ml-2 text-xs text-gray-500">{req.feeder}</span>
+                    <span className="ml-2 text-xs text-zinc-500">{req.feeder}</span>
                   </p>
-                  <p className="text-xs text-gray-400">{req.zone} • Requested by {req.operator}</p>
+                  <p className="text-xs text-zinc-400">{req.zone} • Requested by {req.operator}</p>
                 </div>
                 <StatusBadge status={req.status} />
               </div>
-              <p className="text-sm text-gray-300 mb-3">{req.reason}</p>
+              <p className="text-sm text-zinc-300 mb-3">{req.reason}</p>
               <div className="flex items-center gap-6 text-xs">
                 <div>
-                  <span className="text-gray-500">Current Capacity</span>
+                  <span className="text-zinc-500">Current Capacity</span>
                   <span className="ml-2 font-semibold text-white">{req.current_kva} kVA</span>
                 </div>
-                <div className="text-gray-600">→</div>
+                <div className="text-zinc-600">→</div>
                 <div>
-                  <span className="text-gray-500">Requested</span>
-                  <span className="ml-2 font-semibold text-emerald-400">{req.requested_kva} kVA</span>
+                  <span className="text-zinc-500">Requested</span>
+                  <span className="ml-2 font-semibold text-amber-400">{req.requested_kva} kVA</span>
                 </div>
-                <div className="ml-auto text-gray-500">{req.date}</div>
+                <div className="ml-auto text-zinc-500">{req.date}</div>
               </div>
               {req.status === 'PENDING' && (
-                <div className="mt-3 pt-3 border-t border-gray-800">
-                  <p className="text-xs text-amber-400">⏳ Awaiting Discom review — typical response: 3-5 business days</p>
+                <div className="mt-3 pt-3 border-t border-zinc-800">
+                  <p className="text-xs text-orange-400">⏳ Awaiting Discom review — typical response: 3-5 business days</p>
                 </div>
               )}
               {req.status === 'APPROVED' && (
-                <div className="mt-3 pt-3 border-t border-gray-800">
-                  <p className="text-xs text-emerald-400">✓ DISCOM approved. Upgrade scheduled Q2 2024.</p>
+                <div className="mt-3 pt-3 border-t border-zinc-800">
+                  <p className="text-xs text-amber-400">✓ DISCOM approved. Upgrade scheduled Q2 2024.</p>
                 </div>
               )}
             </div>
@@ -126,20 +126,20 @@ export default function RequestsPage() {
       {tab === 'station' && (
         <div className="space-y-3">
           {approvals.map(ap => (
-            <div key={ap.id} className="bg-gray-900 border border-gray-800 rounded-2xl p-5 hover:border-gray-700 transition-colors">
+            <div key={ap.id} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 transition-colors">
               <div className="flex items-start justify-between mb-2">
                 <div>
                   <p className="font-semibold text-white">{ap.name}</p>
-                  <p className="text-xs text-gray-400">{ap.zone} • Transformer {ap.transformer} • {ap.slots} slots • {ap.operator}</p>
+                  <p className="text-xs text-zinc-400">{ap.zone} • Transformer {ap.transformer} • {ap.slots} slots • {ap.operator}</p>
                 </div>
                 <StatusBadge status={ap.status} />
               </div>
-              <p className="text-xs text-gray-500">{ap.date}</p>
+              <p className="text-xs text-zinc-500">{ap.date}</p>
               {ap.status === 'APPROVED' && (
-                <p className="text-xs text-emerald-400 mt-2">✓ Station is live on the ChargeSmart User App</p>
+                <p className="text-xs text-amber-400 mt-2">✓ Station is live on the ChargeSmart User App</p>
               )}
               {ap.status === 'PENDING' && (
-                <p className="text-xs text-amber-400 mt-2">⏳ Discom verifying transformer capacity before approval</p>
+                <p className="text-xs text-orange-400 mt-2">⏳ Discom verifying transformer capacity before approval</p>
               )}
               {ap.status === 'REJECTED' && (
                 <p className="text-xs text-red-400 mt-2">✗ Rejected — transformer T-{ap.transformer} at capacity. Request upgrade first.</p>

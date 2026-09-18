@@ -40,12 +40,12 @@ export default function TodPolicyPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">ToD Policy Editor</h1>
-          <p className="text-gray-400 text-sm mt-1">Configure time-of-day pricing rules for your zones</p>
+          <p className="text-slate-400 text-sm mt-1">Configure time-of-day pricing rules for your zones</p>
         </div>
         <select
           value={selectedZone.name}
           onChange={e => setSelectedZone(MOCK_ZONES.find(z => z.name === e.target.value))}
-          className="bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-2.5 text-sm"
+          className="bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-2.5 text-sm"
         >
           {MOCK_ZONES.map(z => <option key={z.id} value={z.name}>{z.name}</option>)}
         </select>
@@ -56,37 +56,37 @@ export default function TodPolicyPage() {
         {[
           { label: 'Peak Load', value: `${peakLoad} MW`, sub: 'Current city peak', color: 'text-red-400' },
           { label: 'Est. Peak Reduction', value: `${estPeakReduction}%`, sub: 'With current pricing', color: 'text-emerald-400' },
-          { label: 'Off-Peak Shift', value: `${offPeakShift}%`, sub: 'Sessions → off-peak', color: 'text-cyan-400' },
+          { label: 'Off-Peak Shift', value: `${offPeakShift}%`, sub: 'Sessions → off-peak', color: 'text-sky-400' },
         ].map(({ label, value, sub, color }) => (
-          <div key={label} className="bg-gray-900 border border-gray-800 rounded-2xl p-4 text-center">
+          <div key={label} className="bg-slate-900 border border-slate-800 rounded-2xl p-4 text-center">
             <p className={`text-2xl font-bold ${color}`}>{value}</p>
             <p className="text-xs text-white font-medium mt-1">{label}</p>
-            <p className="text-xs text-gray-500 mt-0.5">{sub}</p>
+            <p className="text-xs text-slate-500 mt-0.5">{sub}</p>
           </div>
         ))}
       </div>
 
       {/* Price Bands Editor */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <h2 className="font-semibold text-white mb-4">Price Bands — {selectedZone.name}</h2>
         <div className="space-y-3">
           {bands.map((band, i) => (
-            <div key={i} className="flex items-center gap-4 p-3 bg-gray-800/50 rounded-xl">
+            <div key={i} className="flex items-center gap-4 p-3 bg-slate-800/50 rounded-xl">
               <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: band.color }} />
-              <div className="w-36 text-sm text-gray-200 font-medium">{band.label}</div>
-              <div className="text-xs text-gray-400 w-20">{band.start_hour}:00 – {band.end_hour}:00</div>
+              <div className="w-36 text-sm text-slate-200 font-medium">{band.label}</div>
+              <div className="text-xs text-slate-400 w-20">{band.start_hour}:00 – {band.end_hour}:00</div>
               <div className="flex items-center gap-2 ml-auto">
-                <span className="text-xs text-gray-400">₹/kWh</span>
+                <span className="text-xs text-slate-400">₹/kWh</span>
                 <input
                   type="number" min={1} max={30} step={1} value={band.price}
                   onChange={e => updateBand(i, 'price', e.target.value)}
-                  className="w-16 bg-gray-700 border border-gray-600 rounded-lg px-2 py-1 text-white text-sm text-center"
+                  className="w-16 bg-slate-700 border border-slate-600 rounded-lg px-2 py-1 text-white text-sm text-center"
                 />
-                <span className="text-xs text-gray-400 ml-2">Disc %</span>
+                <span className="text-xs text-slate-400 ml-2">Disc %</span>
                 <input
                   type="number" min={0} max={50} step={5} value={band.discount}
                   onChange={e => updateBand(i, 'discount', e.target.value)}
-                  className="w-14 bg-gray-700 border border-gray-600 rounded-lg px-2 py-1 text-white text-sm text-center"
+                  className="w-14 bg-slate-700 border border-slate-600 rounded-lg px-2 py-1 text-white text-sm text-center"
                 />
               </div>
             </div>
@@ -96,14 +96,14 @@ export default function TodPolicyPage() {
         <div className="flex gap-3 mt-4">
           <button
             onClick={() => setSaved(true)}
-            className="flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-all"
+            className="flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-all"
           >
             <Save size={15} />
             {saved ? '✓ Saved to Zone' : `Apply to ${selectedZone.name}`}
           </button>
           <button
             onClick={() => setCascadeModal(true)}
-            className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-gray-200 font-medium px-5 py-2.5 rounded-xl text-sm transition-all border border-gray-600"
+            className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium px-5 py-2.5 rounded-xl text-sm transition-all border border-slate-600"
           >
             Cascade to All Zones
           </button>
@@ -111,7 +111,7 @@ export default function TodPolicyPage() {
       </div>
 
       {/* Live price curve */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
         <h2 className="font-semibold text-white mb-4">24-Hour Price Curve (Live Preview)</h2>
         <ResponsiveContainer width="100%" height={200}>
           <AreaChart data={priceCurve} margin={{ top: 4, right: 12, left: -10, bottom: 0 }}>
@@ -135,9 +135,9 @@ export default function TodPolicyPage() {
       {/* Cascade modal */}
       {cascadeModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50" onClick={() => setCascadeModal(false)}>
-          <div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 w-full max-w-md" onClick={e => e.stopPropagation()}>
+          <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 w-full max-w-md" onClick={e => e.stopPropagation()}>
             <h3 className="font-bold text-white text-lg mb-2">Cascade to All Zones?</h3>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-slate-400 text-sm mb-4">
               This will apply the <strong className="text-white">{selectedZone.name}</strong> pricing to all 5 zones:
               Whitefield, Koramangala, Electronic City, Indiranagar, JP Nagar.
             </p>
@@ -145,12 +145,12 @@ export default function TodPolicyPage() {
             <div className="flex gap-3">
               <button
                 onClick={() => { setCascadeModal(false); setSaved(true); }}
-                className="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2.5 rounded-xl text-sm"
+                className="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-semibold py-2.5 rounded-xl text-sm"
               >
                 <CheckCircle size={14} className="inline mr-1" /> Confirm Cascade
               </button>
               <button onClick={() => setCascadeModal(false)}
-                className="flex-1 bg-gray-800 text-gray-300 font-medium py-2.5 rounded-xl text-sm border border-gray-700">
+                className="flex-1 bg-slate-800 text-slate-300 font-medium py-2.5 rounded-xl text-sm border border-slate-700">
                 Cancel
               </button>
             </div>

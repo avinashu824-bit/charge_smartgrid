@@ -79,10 +79,10 @@ export default function ApprovalsPage() {
       </div>
 
       {/* Header */}
-      <div className="px-6 py-4 border-b border-[#1E293B] bg-[#0F172A] shrink-0">
+      <div className="px-6 py-4 border-b border-[#1E293B] bg-[#0f172a] shrink-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <CheckSquare className="w-5 h-5 text-cyan-400" />
+            <CheckSquare className="w-5 h-5 text-sky-400" />
             <div>
               <h1 className="text-base font-bold text-white">Approvals Queue</h1>
               <p className="text-[11px] text-slate-500">Station requests & transformer upgrade sanctions</p>
@@ -102,7 +102,7 @@ export default function ApprovalsPage() {
             onClick={() => setTab('stations')}
             className={`px-4 py-2 rounded-t-lg text-sm font-semibold transition-all ${
               tab === 'stations'
-                ? 'bg-[#0A0F1E] text-white border-t border-l border-r border-[#1E293B]'
+                ? 'bg-[#020617] text-white border-t border-l border-r border-[#1E293B]'
                 : 'text-slate-500 hover:text-slate-300'
             }`}
           >
@@ -115,7 +115,7 @@ export default function ApprovalsPage() {
             onClick={() => setTab('upgrades')}
             className={`px-4 py-2 rounded-t-lg text-sm font-semibold transition-all ${
               tab === 'upgrades'
-                ? 'bg-[#0A0F1E] text-white border-t border-l border-r border-[#1E293B]'
+                ? 'bg-[#020617] text-white border-t border-l border-r border-[#1E293B]'
                 : 'text-slate-500 hover:text-slate-300'
             }`}
           >
@@ -130,7 +130,7 @@ export default function ApprovalsPage() {
       {/* Content */}
       <div className="flex-1 overflow-y-auto p-6">
         {tab === 'stations' ? (
-          <div className="bg-[#0F172A] rounded-xl border border-[#1E293B] overflow-hidden">
+          <div className="bg-[#0f172a] rounded-xl border border-[#1E293B] overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full dark-table">
                 <thead>
@@ -149,7 +149,7 @@ export default function ApprovalsPage() {
                 <tbody>
                   {stationReqs.map((req) => (
                     <tr key={req.id} className="animate-fade-in">
-                      <td className="font-mono text-cyan-400 text-xs">{req.id}</td>
+                      <td className="font-mono text-sky-400 text-xs">{req.id}</td>
                       <td className="font-medium text-white text-sm">{req.operator}</td>
                       <td className="text-slate-300 text-sm max-w-[140px] truncate">{req.location}</td>
                       <td className="font-mono text-xs text-slate-400">{req.transformer_id}</td>
@@ -190,7 +190,7 @@ export default function ApprovalsPage() {
             </div>
           </div>
         ) : (
-          <div className="bg-[#0F172A] rounded-xl border border-[#1E293B] overflow-hidden">
+          <div className="bg-[#0f172a] rounded-xl border border-[#1E293B] overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full dark-table">
                 <thead>
@@ -210,11 +210,11 @@ export default function ApprovalsPage() {
                 <tbody>
                   {upgradeReqs.map((req) => (
                     <tr key={req.id} className="animate-fade-in">
-                      <td className="font-mono text-cyan-400 text-xs">{req.id}</td>
+                      <td className="font-mono text-sky-400 text-xs">{req.id}</td>
                       <td className="font-mono font-bold text-white text-sm">{req.transformer_id}</td>
                       <td className="text-xs text-slate-400">{req.zone}</td>
                       <td className="text-right text-slate-300 text-sm">{req.current_capacity_kva}</td>
-                      <td className="text-right font-bold text-cyan-400 text-sm">{req.requested_capacity_kva}</td>
+                      <td className="text-right font-bold text-sky-400 text-sm">{req.requested_capacity_kva}</td>
                       <td className="text-xs text-slate-400 max-w-[200px]">
                         <span className="truncate block" title={req.reason}>{req.reason.slice(0, 50)}…</span>
                       </td>

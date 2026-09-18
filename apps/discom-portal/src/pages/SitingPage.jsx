@@ -145,8 +145,8 @@ export default function SitingPage() {
 
         {/* Instructions banner */}
         {!clickedPoint && (
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[500] bg-[#0F172A]/95 border border-cyan-500/30 rounded-2xl px-6 py-4 backdrop-blur-sm flex items-center gap-3 shadow-xl glow-cyan animate-fade-in">
-            <Target className="w-5 h-5 text-cyan-400 shrink-0" />
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[500] bg-[#0f172a]/95 border border-sky-500/30 rounded-2xl px-6 py-4 backdrop-blur-sm flex items-center gap-3 shadow-xl glow-cyan animate-fade-in">
+            <Target className="w-5 h-5 text-sky-400 shrink-0" />
             <div>
               <p className="text-white font-semibold text-sm">Click anywhere on the map</p>
               <p className="text-slate-400 text-xs">to find optimal EV charging station locations</p>
@@ -155,13 +155,13 @@ export default function SitingPage() {
         )}
 
         {/* Map header */}
-        <div className="absolute top-4 left-4 z-[500] bg-[#0F172A]/90 border border-[#1E293B] rounded-xl px-3 py-2 backdrop-blur-sm flex items-center gap-2">
-          <MapPin className="w-4 h-4 text-cyan-400" />
+        <div className="absolute top-4 left-4 z-[500] bg-[#0f172a]/90 border border-[#1E293B] rounded-xl px-3 py-2 backdrop-blur-sm flex items-center gap-2">
+          <MapPin className="w-4 h-4 text-sky-400" />
           <span className="text-xs text-slate-300 font-medium">Siting Tool · Bengaluru</span>
         </div>
 
         {/* Legend */}
-        <div className="absolute bottom-4 left-4 z-[500] bg-[#0F172A]/90 border border-[#1E293B] rounded-xl p-3 backdrop-blur-sm">
+        <div className="absolute bottom-4 left-4 z-[500] bg-[#0f172a]/90 border border-[#1E293B] rounded-xl p-3 backdrop-blur-sm">
           <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Transformer Status</div>
           {[
             { label: 'Available', color: '#10B981' },
@@ -178,8 +178,8 @@ export default function SitingPage() {
 
       {/* Results Panel — slides in */}
       {recommendations.length > 0 && (
-        <div className="w-80 bg-[#0A0F1E] border-l border-[#1E293B] overflow-y-auto flex flex-col animate-slide-in-right">
-          <div className="p-4 border-b border-[#1E293B] bg-[#0F172A]">
+        <div className="w-80 bg-[#020617] border-l border-[#1E293B] overflow-y-auto flex flex-col animate-slide-in-right">
+          <div className="p-4 border-b border-[#1E293B] bg-[#0f172a]">
             <div className="flex items-center gap-2 mb-1">
               <Award className="w-4 h-4 text-yellow-400" />
               <h3 className="text-sm font-bold text-white">Top Siting Locations</h3>
@@ -217,7 +217,7 @@ export default function SitingPage() {
                   </div>
 
                   {/* Transformer info */}
-                  <div className="bg-[#0A0F1E]/60 rounded-lg p-2 mb-3 text-[11px]">
+                  <div className="bg-[#020617]/60 rounded-lg p-2 mb-3 text-[11px]">
                     <div className="flex justify-between mb-0.5">
                       <span className="text-slate-400">Transformer</span>
                       <span className="text-white font-mono font-bold">{rec.transformer.id}</span>
@@ -251,8 +251,8 @@ export default function SitingPage() {
                   ) : (
                     <button
                       onClick={() => handleApprove(rec)}
-                      className="w-full py-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 
-                        text-cyan-400 text-xs font-semibold transition-all flex items-center justify-center gap-2"
+                      className="w-full py-2 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 
+                        text-sky-400 text-xs font-semibold transition-all flex items-center justify-center gap-2"
                     >
                       <Trophy size={12} /> Approve This Location
                     </button>

@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 const ALERT_SEVERITY_CONFIG = {
   red:    { dot: 'bg-red-500', border: 'border-l-red-500', bg: 'bg-red-500/5', label: 'CRITICAL' },
   yellow: { dot: 'bg-amber-400', border: 'border-l-amber-400', bg: 'bg-amber-400/5', label: 'WARNING' },
-  cyan:   { dot: 'bg-cyan-400', border: 'border-l-cyan-400', bg: 'bg-cyan-400/5', label: 'INFO' },
+  cyan:   { dot: 'bg-sky-400', border: 'border-l-sky-400', bg: 'bg-sky-400/5', label: 'INFO' },
   green:  { dot: 'bg-green-400', border: 'border-l-green-400', bg: 'bg-green-400/5', label: 'RESOLVED' },
 };
 
@@ -112,9 +112,9 @@ export default function CommandCenterPage() {
   return (
     <div className="flex flex-col h-full gap-0 overflow-hidden">
       {/* ── Top toolbar ─────────────────────────────── */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#1E293B] bg-[#0F172A] shrink-0">
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#1E293B] bg-[#0f172a] shrink-0">
         <div className="flex items-center gap-2">
-          <Radio className="w-4 h-4 text-cyan-400 animate-pulse" />
+          <Radio className="w-4 h-4 text-sky-400 animate-pulse" />
           <span className="text-white font-semibold text-sm">Live Grid Command Center</span>
           <span className="text-[10px] text-slate-500 ml-2">Updated {lastUpdated.toLocaleTimeString('en-IN')}</span>
         </div>
@@ -129,7 +129,7 @@ export default function CommandCenterPage() {
                   ? s === 'GREEN' ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                   : s === 'YELLOW' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
                   : s === 'RED' ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                  : 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30'
+                  : 'bg-sky-500/20 text-sky-400 border border-sky-500/30'
                   : 'text-slate-500 hover:text-slate-300 border border-transparent'
               }`}
             >
@@ -141,7 +141,7 @@ export default function CommandCenterPage() {
           <button
             onClick={() => setShowZones(!showZones)}
             className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium border transition-all ${
-              showZones ? 'border-cyan-500/40 text-cyan-400 bg-cyan-500/10' : 'border-[#334155] text-slate-400 hover:text-slate-200'
+              showZones ? 'border-sky-500/40 text-sky-400 bg-sky-500/10' : 'border-[#334155] text-slate-400 hover:text-slate-200'
             }`}
           >
             <Layers size={12} /> Zones
@@ -161,7 +161,7 @@ export default function CommandCenterPage() {
         <div className="relative flex-none" style={{ width: '60%' }}>
           <div ref={mapRef} className="w-full h-full" />
           {/* Legend overlay */}
-          <div className="absolute bottom-4 left-4 z-[500] bg-[#0F172A]/90 border border-[#1E293B] rounded-xl p-3 backdrop-blur-sm">
+          <div className="absolute bottom-4 left-4 z-[500] bg-[#0f172a]/90 border border-[#1E293B] rounded-xl p-3 backdrop-blur-sm">
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Grid Status</div>
             {[
               { label: 'Critical (>85%)', color: '#EF4444' },
@@ -179,8 +179,8 @@ export default function CommandCenterPage() {
           </div>
 
           {/* Transformer count overlay */}
-          <div className="absolute top-4 left-4 z-[500] flex items-center gap-2 bg-[#0F172A]/90 border border-[#1E293B] rounded-xl px-3 py-2 backdrop-blur-sm">
-            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+          <div className="absolute top-4 left-4 z-[500] flex items-center gap-2 bg-[#0f172a]/90 border border-[#1E293B] rounded-xl px-3 py-2 backdrop-blur-sm">
+            <div className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
             <span className="text-xs text-slate-300 font-medium">
               {selectedStatus === 'ALL' ? 50 : transformers.filter(t => t.status === selectedStatus).length} transformers · Bengaluru
             </span>
@@ -188,7 +188,7 @@ export default function CommandCenterPage() {
         </div>
 
         {/* Right Panel — 40% */}
-        <div className="flex-1 flex flex-col gap-3 overflow-y-auto p-4 bg-[#0A0F1E]">
+        <div className="flex-1 flex flex-col gap-3 overflow-y-auto p-4 bg-[#020617]">
           {/* KPI Ribbon */}
           <div>
             <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Live KPIs</div>
@@ -196,7 +196,7 @@ export default function CommandCenterPage() {
           </div>
 
           {/* Alert Feed */}
-          <div className="bg-[#0F172A] rounded-xl border border-[#1E293B] overflow-hidden">
+          <div className="bg-[#0f172a] rounded-xl border border-[#1E293B] overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[#1E293B]">
               <div className="flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4 text-amber-400" />
@@ -226,9 +226,9 @@ export default function CommandCenterPage() {
           </div>
 
           {/* Top Stressed Transformers */}
-          <div className="bg-[#0F172A] rounded-xl border border-[#1E293B] overflow-hidden">
+          <div className="bg-[#0f172a] rounded-xl border border-[#1E293B] overflow-hidden">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1E293B]">
-              <TrendingUp className="w-4 h-4 text-cyan-400" />
+              <TrendingUp className="w-4 h-4 text-sky-400" />
               <span className="text-sm font-semibold text-white">Top Stressed Transformers</span>
             </div>
             <div className="p-3 space-y-2">
@@ -255,14 +255,14 @@ export default function CommandCenterPage() {
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-[#0F172A] rounded-xl border border-[#1E293B] p-4">
+          <div className="bg-[#0f172a] rounded-xl border border-[#1E293B] p-4">
             <div className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Quick Actions</div>
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => navigate('/approvals')}
-                className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1E293B] hover:bg-[#334155] border border-[#334155] hover:border-cyan-500/40 text-slate-300 hover:text-white text-xs font-medium transition-all"
+                className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[#1E293B] hover:bg-[#334155] border border-[#334155] hover:border-sky-500/40 text-slate-300 hover:text-white text-xs font-medium transition-all"
               >
-                <CheckSquare size={14} className="text-cyan-400" />
+                <CheckSquare size={14} className="text-sky-400" />
                 Approve Stations
               </button>
               <button
@@ -290,7 +290,7 @@ export default function CommandCenterPage() {
           </div>
 
           {/* Transformer zone summary */}
-          <div className="bg-[#0F172A] rounded-xl border border-[#1E293B] p-4">
+          <div className="bg-[#0f172a] rounded-xl border border-[#1E293B] p-4">
             <div className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Zone Summary</div>
             <div className="space-y-2">
               {[

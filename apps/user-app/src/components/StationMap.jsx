@@ -43,9 +43,9 @@ export default function StationMap({ stations, onStationSelect, selectedStation 
           }}
         >
           <Popup className="station-popup">
-            <div className="text-gray-900 min-w-[160px]">
+            <div className="text-neutral-900 min-w-[160px]">
               <p className="font-bold text-sm">{station.name}</p>
-              <p className="text-xs text-gray-600">{station.zone}</p>
+              <p className="text-xs text-neutral-600">{station.zone}</p>
               <div className="mt-2 space-y-1">
                 <p className="text-xs">💰 ₹{station.currentPriceInr}/kWh</p>
                 <p className="text-xs">🔌 {station.availableSlots}/{station.totalSlots} slots free</p>
