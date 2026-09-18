@@ -3,8 +3,8 @@ import React, { createContext, useContext, useState } from 'react';
 const AuthContext = createContext(null);
 
 const VALID_CREDENTIALS = {
-  'admin@bescom.gov.in': { password: 'admin123', role: 'discom_admin', name: 'Rajan Sharma', designation: 'Grid Operations Manager' },
-  'operator@bescom.gov.in': { password: 'pass123', role: 'operator', name: 'Priya Venkatesh', designation: 'Substation Operator' },
+  'admin@discom.gov.in':    { password: 'admin123', role: 'discom_admin', name: 'Rajan Sharma',     designation: 'Grid Operations Manager' },
+  'operator@discom.gov.in': { password: 'pass123',  role: 'operator',     name: 'Priya Venkatesh', designation: 'Substation Operator' },
 };
 
 export function AuthProvider({ children }) {
@@ -20,15 +20,15 @@ export function AuthProvider({ children }) {
     if (cred && cred.password === password) {
       const u = { email, role: cred.role, name: cred.name, designation: cred.designation };
       setUser(u);
-      localStorage.setItem('user', JSON.stringify(u));
+      localStorage.setItem('discom_user', JSON.stringify(u));
       return { success: true, user: u };
     }
-    return { success: false, error: 'Invalid credentials. Try admin@bescom.gov.in / admin123' };
+    return { success: false, error: 'Invalid credentials. Try admin@discom.gov.in / admin123' };
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem('discom_user');
   };
 
   return (

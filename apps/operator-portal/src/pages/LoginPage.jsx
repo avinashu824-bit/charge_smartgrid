@@ -4,8 +4,8 @@ import { Zap, Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react'
 import { useAuth } from '../context/AuthContext.jsx'
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('ops@chargezone.in')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('operator@discom.gov.in')
+  const [password, setPassword] = useState('operator123')
   const [showPw, setShowPw] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -141,7 +141,7 @@ export default function LoginPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ops@chargezone.in"
+                  placeholder="operator@discom.gov.in"
                   className="w-full border border-zinc-200 rounded-xl px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
                   required
                 />
@@ -198,9 +198,9 @@ export default function LoginPage() {
             <div className="mt-6 p-4 bg-amber-50 rounded-xl border border-amber-100">
               <p className="text-xs text-amber-700 font-medium mb-1">Demo Credentials</p>
               <p className="text-xs text-amber-600">
-                Email: <span className="font-mono font-bold">ops@chargezone.in</span>
+                Email: <span className="font-mono font-bold">operator@discom.gov.in</span>
               </p>
-              <p className="text-xs text-amber-600">Password: <span className="font-bold">any value</span></p>
+              <p className="text-xs text-amber-600">Password: <span className="font-bold">operator123</span></p>
             </div>
           </div>
 

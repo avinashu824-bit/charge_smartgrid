@@ -2,52 +2,52 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 
 const AuthContext = createContext(null)
 
+const VALID_CREDENTIALS = {
+  'operator@discom.gov.in': { password: 'operator123', name: 'Rajesh Kumar', role: 'Operator Admin', company: 'ChargeSmart Pvt Ltd', zone: 'Bengaluru South', avatar: 'RK' },
+  'ops@chargezone.in':      { password: 'ops123',      name: 'Priya Nair',   role: 'Station Manager', company: 'ChargeZone Pvt Ltd', zone: 'Bengaluru North', avatar: 'PN' },
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const token = localStorage.getItem('cs_token')
-    const savedUser = localStorage.getItem('cs_user')
-    if (token && savedUser) {
+    const savedUser = localStorage.getItem('op_user')
+    if (savedUser) {
       try {
         setUser(JSON.parse(savedUser))
         setIsAuthenticated(true)
       } catch (e) {
-        localStorage.removeItem('cs_token')
-        localStorage.removeItem('cs_user')
+        localStorage.removeItem('op_user')
       }
     }
     setLoading(false)
   }, [])
 
   const login = async (email, password) => {
-    // Demo: hardcoded operator credentials
-    if (email === 'ops@chargezone.in' && password) {
+    const cred = VALID_CREDENTIALS[email]
+    if (cred && cred.password === password) {
       const mockUser = {
         id: 1,
         operator_id: 1,
-        name: 'Rajesh Kumar',
-        email: 'ops@chargezone.in',
-        role: 'Operator Admin',
-        company: 'ChargeZone Pvt Ltd',
-        zone: 'Bengaluru South',
-        avatar: 'RK',
+        name: cred.name,
+        email,
+        role: cred.role,
+        company: cred.company,
+        zone: cred.zone,
+        avatar: cred.avatar,
       }
-      const mockToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.demo.token'
-      localStorage.setItem('cs_token', mockToken)
-      localStorage.setItem('cs_user', JSON.stringify(mockUser))
+      localStorage.setItem('op_user', JSON.stringify(mockUser))
       setUser(mockUser)
       setIsAuthenticated(true)
       return { success: true }
     }
-    return { success: false, message: 'Invalid credentials. Use ops@chargezone.in' }
+    return { success: false, message: 'Invalid credentials. Use operator@discom.gov.in / operator123' }
   }
 
   const logout = () => {
-    localStorage.removeItem('cs_token')
-    localStorage.removeItem('cs_user')
+    localStorage.removeItem('op_user')
     setUser(null)
     setIsAuthenticated(false)
   }
