@@ -15,8 +15,13 @@ export default function LoginPage() {
 
   const from = location.state?.from?.pathname || '/dashboard'
 
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      navigate(from, { replace: true })
+    }
+  }, [isAuthenticated, navigate, from])
+
   if (isAuthenticated) {
-    navigate(from, { replace: true })
     return null
   }
 
@@ -157,7 +162,7 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowPw(!showPw)}
-                    className="absolute right-4 top-1/2 -tranzinc-y-1/2 text-zinc-400 hover:text-zinc-600"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600"
                   >
                     {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>

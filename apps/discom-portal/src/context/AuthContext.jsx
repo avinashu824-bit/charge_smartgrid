@@ -20,12 +20,16 @@ export function AuthProvider({ children }) {
     if (cred && cred.password === password) {
       const u = { email, role: cred.role, name: cred.name, designation: cred.designation };
       setUser(u);
+      localStorage.setItem('user', JSON.stringify(u));
       return { success: true, user: u };
     }
     return { success: false, error: 'Invalid credentials. Try admin@bescom.gov.in / admin123' };
   };
 
-  const logout = () => setUser(null);
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+  };
 
   return (
     <AuthContext.Provider value={{ user, login, logout, loading }}>

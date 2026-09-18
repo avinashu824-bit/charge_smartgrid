@@ -108,7 +108,7 @@ export default function MapPage() {
 
       {/* Bottom drawer */}
       <div className={`absolute bottom-0 left-0 right-0 z-[1000] bg-neutral-900 rounded-t-3xl shadow-2xl transition-transform duration-300 ${
-        drawerOpen ? 'tranneutral-y-0' : 'tranneutral-y-full'
+        drawerOpen ? 'translate-y-0' : 'translate-y-full'
       }`} style={{ maxHeight: '65vh' }}>
         {/* Drag handle */}
         <div className="flex justify-center pt-3 pb-2">
@@ -222,7 +222,7 @@ export default function MapPage() {
       {!drawerOpen && (
         <button
           onClick={() => setDrawerOpen(true)}
-          className="absolute bottom-4 left-1/2 -tranneutral-x-1/2 z-[999] bg-neutral-900 border border-neutral-700 rounded-2xl px-6 py-3 text-sm font-medium text-white shadow-xl flex items-center gap-2"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[999] bg-neutral-900 border border-neutral-700 rounded-2xl px-6 py-3 text-sm font-medium text-white shadow-xl flex items-center gap-2"
         >
           <Zap size={14} className="text-violet-400" />
           {sorted.filter(s => s.status === 'GREEN').length} stations available

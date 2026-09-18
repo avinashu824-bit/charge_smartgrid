@@ -190,7 +190,7 @@ export default function StationsPage() {
       {/* Search & Filter */}
       <div className="flex items-center gap-3 mb-5">
         <div className="relative flex-1 max-w-md">
-          <Search size={15} className="absolute left-3.5 top-1/2 -tranzinc-y-1/2 text-zinc-400" />
+          <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" />
           <input
             type="text"
             placeholder="Search stations, zones..."

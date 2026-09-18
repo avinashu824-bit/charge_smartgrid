@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 const AuthContext = createContext(null)
 
@@ -11,8 +11,13 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem('cs_token')
     const savedUser = localStorage.getItem('cs_user')
     if (token && savedUser) {
-      setUser(JSON.parse(savedUser))
-      setIsAuthenticated(true)
+      try {
+        setUser(JSON.parse(savedUser))
+        setIsAuthenticated(true)
+      } catch (e) {
+        localStorage.removeItem('cs_token')
+        localStorage.removeItem('cs_user')
+      }
     }
     setLoading(false)
   }, [])

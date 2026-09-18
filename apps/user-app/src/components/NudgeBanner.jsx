@@ -6,7 +6,7 @@ export default function NudgeBanner({ nudge, onDismiss }) {
   return (
     <div className="nudge-gradient mx-4 mb-3 rounded-2xl p-4 relative overflow-hidden shadow-lg">
       {/* Background decoration */}
-      <div className="absolute right-2 top-1/2 -tranneutral-y-1/2 opacity-10">
+      <div className="absolute right-2 top-1/2 -translate-y-1/2 opacity-10">
         <Moon size={64} />
       </div>
 

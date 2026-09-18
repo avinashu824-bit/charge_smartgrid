@@ -145,7 +145,7 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowPw(!showPw)}
-                    className="absolute right-4 top-1/2 -tranneutral-y-1/2 text-neutral-400 hover:text-neutral-600"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
                   >
                     {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
