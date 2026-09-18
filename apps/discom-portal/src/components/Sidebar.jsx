@@ -40,7 +40,7 @@ export default function Sidebar() {
         {!collapsed && (
           <div className="animate-fade-in overflow-hidden">
             <div className="text-white font-bold text-sm leading-tight">ChargeSmart</div>
-            <div className="text-[10px] text-cyan-400 font-medium tracking-widest uppercase">BESCOM Grid</div>
+            <div className="text-[10px] text-cyan-400 font-medium tracking-widest uppercase">DISCOM Grid</div>
           </div>
         )}
       </div>

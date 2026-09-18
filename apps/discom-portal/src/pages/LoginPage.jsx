@@ -49,7 +49,7 @@ export default function LoginPage() {
             </div>
           </div>
           <h1 className="text-3xl font-bold text-white mb-1">ChargeSmart Grid</h1>
-          <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase">BESCOM Discom Admin Portal</p>
+          <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase">DISCOM Admin Portal</p>
           <div className="flex items-center justify-center gap-2 mt-3">
             <Shield className="w-3.5 h-3.5 text-slate-500" />
             <span className="text-xs text-slate-500">Secured · Government of Karnataka</span>
