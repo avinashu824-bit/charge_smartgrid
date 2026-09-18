@@ -2,13 +2,13 @@ import React from 'react';
 import { Zap, Clock, Navigation } from 'lucide-react';
 
 const STATUS_STYLES = {
-  GREEN: 'border-violet-500 bg-violet-500/10',
+  GREEN: 'border-emerald-500 bg-emerald-500/10',
   YELLOW: 'border-amber-500 bg-amber-500/10',
   RED: 'border-red-500 bg-red-500/10',
 };
 
 const STATUS_DOT = {
-  GREEN: 'bg-violet-400',
+  GREEN: 'bg-emerald-400',
   YELLOW: 'bg-amber-400',
   RED: 'bg-red-400 animate-pulse',
 };
