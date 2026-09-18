@@ -1,0 +1,21 @@
+{
+  "name": "chargesmart-grid",
+  "version": "1.0.0",
+  "description": "ChargeSmart Grid - EV Charging Load Forecasting & Grid-Stress Advisory Platform",
+  "workspaces": [
+    "apps/*",
+    "services/api-gateway"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"HUB,USER,OPERATOR,DISCOM\" -c \"yellow,green,blue,magenta\" \"node hub-server.js\" \"npm run dev:user\" \"npm run dev:operator\" \"npm run dev:discom\"",
+    "hub": "node hub-server.js",
+    "dev:user": "npm run dev --workspace=apps/user-app",
+    "dev:operator": "npm run dev --workspace=apps/operator-portal",
+    "dev:discom": "npm run dev --workspace=apps/discom-portal",
+    "dev:all": "npm run dev",
+    "install:all": "npm install --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

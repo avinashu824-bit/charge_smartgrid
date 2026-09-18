@@ -1,0 +1,90 @@
+﻿version: "3.9"
+
+networks:
+  chargesmart-net:
+    driver: bridge
+
+volumes:
+  pg_data:
+
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: chargesmart-db
+    environment:
+      POSTGRES_DB: chargesmart
+      POSTGRES_USER: chargesmart
+      POSTGRES_PASSWORD: chargesmart123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - chargesmart-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chargesmart -d chargesmart"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: chargesmart-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - chargesmart-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  core-api:
+    build: ../services/core-api
+    container_name: chargesmart-core-api
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+asyncpg://chargesmart:chargesmart123@db:5432/chargesmart
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: chargesmart_jwt_secret_2024
+    networks:
+      - chargesmart-net
+    volumes:
+      - ../services/core-api:/app
+
+  api-gateway:
+    build: ../services/api-gateway
+    container_name: chargesmart-api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - core-api
+      - redis
+    environment:
+      CORE_API_URL: http://core-api:8000
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: chargesmart_jwt_secret_2024
+      PORT: 3000
+    networks:
+      - chargesmart-net
+
+  ml-engine:
+    build: ../services/ml-engine
+    container_name: chargesmart-ml-engine
+    ports:
+      - "8001:8001"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://chargesmart:chargesmart123@db:5432/chargesmart
+    networks:
+      - chargesmart-net
