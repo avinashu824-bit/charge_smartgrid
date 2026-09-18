@@ -4,7 +4,8 @@ let socket = null
 
 export function getSocket() {
   if (!socket) {
-    socket = io('http://localhost:5000', {
+    const gatewayUrl = import.meta.env.VITE_GATEWAY_URL || 'http://localhost:5000';
+    socket = io(gatewayUrl, {
       auth: { token: localStorage.getItem('cs_token') },
       transports: ['websocket', 'polling'],
       reconnectionAttempts: 5,

@@ -4,7 +4,8 @@ let socket = null;
 
 export function getSocket() {
   if (!socket) {
-    socket = io('http://localhost:3000', {
+    const gatewayUrl = import.meta.env.VITE_GATEWAY_URL || 'http://localhost:3000';
+    socket = io(gatewayUrl, {
       transports: ['websocket', 'polling'],
       reconnectionAttempts: 5,
       timeout: 5000
