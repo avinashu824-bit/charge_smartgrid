@@ -114,7 +114,7 @@ export default function CommandCenterPage() {
       {/* ── Header ───────────────────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 px-4 md:px-6 py-4 border-b border-[#1E293B] bg-[#0f172a] shrink-0 w-full overflow-hidden">
         <div className="flex items-center gap-3 min-w-0">
-          <Activity className="w-5 h-5 text-sky-400 shrink-0" />
+          <Radio className="w-5 h-5 text-sky-400 shrink-0 animate-pulse" />
           <div className="truncate">
             <h1 className="text-base font-bold text-white leading-tight truncate">Live Grid Command Center</h1>
             <p className="text-[11px] text-slate-500 truncate">Updated {lastUpdated.toLocaleTimeString('en-IN')} · DISCOM Grid Control</p>
