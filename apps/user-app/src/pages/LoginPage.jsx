@@ -63,18 +63,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
-            {[
-              { value: '124', label: 'Nearby Chargers' },
-              { value: '₹4.5', label: 'Off-peak rate' },
-              { value: '100%', label: 'Green Energy' },
-            ].map((stat) => (
-              <div key={stat.label} className="bg-white/10 rounded-xl p-4 text-center backdrop-blur-sm border border-white/10">
-                <p className="text-2xl font-bold text-violet-400">{stat.value}</p>
-                <p className="text-neutral-300 text-xs mt-1">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+
 
           <div className="flex items-center gap-3 bg-violet-500/10 border border-violet-500/20 rounded-xl p-4">
             <div className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />

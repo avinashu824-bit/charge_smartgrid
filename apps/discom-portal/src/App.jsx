@@ -17,9 +17,9 @@ function ProtectedRoute({ children }) {
 
 function Layout({ children }) {
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex flex-col md:flex-row h-[100dvh] overflow-hidden">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto bg-slate-950">
+      <main className="flex-1 overflow-y-auto bg-slate-950 relative flex flex-col">
         {children}
       </main>
     </div>

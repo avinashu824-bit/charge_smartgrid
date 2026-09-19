@@ -128,26 +128,26 @@ export default function SimulationPage() {
       </div>
 
       {/* ── Control Bar ─────────────────────────────── */}
-      <div className="flex items-center gap-6 px-6 py-4 border-b border-[#1E293B] bg-[#0f172a] shrink-0">
-        <div className="flex-1 max-w-xs">
+      <div className="flex flex-wrap md:flex-nowrap items-center gap-4 md:gap-6 px-4 md:px-6 py-3 md:py-4 border-b border-[#1E293B] bg-[#0f172a] shrink-0">
+        <div className="flex-1 min-w-[120px] max-w-xs">
           <label className="flex items-center justify-between mb-1.5">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">EV Adoption Growth</span>
-            <span className="text-sm font-bold text-sky-400">{evGrowth}%</span>
+            <span className="text-[10px] md:text-xs font-semibold text-slate-400 uppercase tracking-wider">EV Adoption Growth</span>
+            <span className="text-xs md:text-sm font-bold text-sky-400">{evGrowth}%</span>
           </label>
           <input type="range" min={0} max={100} step={5} value={evGrowth}
-            onChange={e => setEvGrowth(+e.target.value)} />
+            onChange={e => setEvGrowth(+e.target.value)} className="w-full" />
           <div className="flex justify-between text-[10px] text-slate-600 mt-0.5">
             <span>0%</span><span>50%</span><span>100%</span>
           </div>
         </div>
 
-        <div className="flex-1 max-w-xs">
+        <div className="flex-1 min-w-[120px] max-w-xs">
           <label className="flex items-center justify-between mb-1.5">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Months Ahead</span>
-            <span className="text-sm font-bold text-sky-400">{monthsAhead} mo</span>
+            <span className="text-[10px] md:text-xs font-semibold text-slate-400 uppercase tracking-wider">Months Ahead</span>
+            <span className="text-xs md:text-sm font-bold text-sky-400">{monthsAhead} mo</span>
           </label>
           <input type="range" min={1} max={24} step={1} value={monthsAhead}
-            onChange={e => setMonthsAhead(+e.target.value)} />
+            onChange={e => setMonthsAhead(+e.target.value)} className="w-full" />
           <div className="flex justify-between text-[10px] text-slate-600 mt-0.5">
             <span>1m</span><span>12m</span><span>24m</span>
           </div>
@@ -156,7 +156,7 @@ export default function SimulationPage() {
         <button
           onClick={handleRunSimulation}
           disabled={isRunning}
-          className="flex items-center gap-2 px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-400 
+          className="w-full md:w-auto flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 rounded-xl bg-purple-500 hover:bg-purple-400 
             disabled:opacity-60 text-white font-bold text-sm transition-all shrink-0"
         >
           {isRunning ? (
@@ -167,10 +167,10 @@ export default function SimulationPage() {
         </button>
 
         {hasRun && (
-          <div className="flex items-center gap-1 border border-[#1E293B] rounded-xl overflow-hidden shrink-0">
+          <div className="w-full md:w-auto flex items-center justify-center gap-1 border border-[#1E293B] rounded-xl overflow-hidden shrink-0 mt-2 md:mt-0">
             {['current', 'projected', 'both'].map(m => (
               <button key={m} onClick={() => setViewMode(m)}
-                className={`px-3 py-2 text-xs font-medium transition-all capitalize ${
+                className={`flex-1 md:flex-none px-3 py-2 text-xs font-medium transition-all capitalize ${
                   viewMode === m ? 'bg-purple-500/20 text-purple-400' : 'text-slate-400 hover:text-white'
                 }`}>
                 {m}
@@ -181,10 +181,18 @@ export default function SimulationPage() {
       </div>
 
       {/* ── Main ────────────────────────────────────── */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-col md:flex-row flex-1 overflow-hidden relative">
         {/* Map */}
-        <div className="relative flex-none" style={{ width: '55%' }}>
+        <div className="relative flex-1 md:flex-none md:w-[55%] w-full h-full">
           <div ref={mapRef} className="w-full h-full" />
+          
+          {/* Mobile Panel Toggle */}
+          <button 
+            className="md:hidden absolute top-4 right-4 z-[500] bg-[#0f172a]/90 border border-purple-500/50 text-purple-400 p-2 rounded-xl backdrop-blur-sm shadow-lg flex items-center gap-2"
+            onClick={() => document.getElementById('mobile-sim-panel').classList.toggle('translate-y-full')}
+          >
+            <TrendingUp size={16} /> <span className="text-xs font-semibold">Results</span>
+          </button>
 
           {/* Legend */}
           <div className="absolute bottom-4 left-4 z-[500] bg-[#0f172a]/90 border border-[#1E293B] rounded-xl p-3 backdrop-blur-sm">
@@ -218,7 +226,18 @@ export default function SimulationPage() {
         </div>
 
         {/* Results Panel */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        <div 
+          id="mobile-sim-panel"
+          className="absolute inset-x-0 bottom-0 top-16 md:top-0 md:relative md:flex-1 flex flex-col overflow-y-auto p-4 space-y-4 bg-[#0f172a] md:bg-transparent 
+                     transform translate-y-full md:translate-y-0 transition-transform duration-300 ease-in-out z-[600] md:z-auto"
+        >
+          {/* Close button on mobile */}
+          <button 
+            className="md:hidden sticky top-0 left-0 bg-purple-500/10 text-purple-400 p-2 rounded-xl border border-purple-500/20 mb-2 font-medium text-xs flex justify-center w-full z-10 backdrop-blur-md"
+            onClick={() => document.getElementById('mobile-sim-panel').classList.add('translate-y-full')}
+          >
+            Close Results
+          </button>
           {/* Summary Banner */}
           {hasRun && simResult && (
             <div className="animate-fade-in">

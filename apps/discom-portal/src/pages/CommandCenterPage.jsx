@@ -156,10 +156,18 @@ export default function CommandCenterPage() {
       </div>
 
       {/* ── Main content: Map + Right Panel ─────────── */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Map — 60% */}
-        <div className="relative flex-none" style={{ width: '60%' }}>
+      <div className="flex flex-col md:flex-row flex-1 overflow-hidden relative">
+        {/* Map */}
+        <div className="relative flex-1 md:flex-none md:w-[60%] w-full h-full">
           <div ref={mapRef} className="w-full h-full" />
+          
+          {/* Mobile Panel Toggle */}
+          <button 
+            className="md:hidden absolute top-4 right-4 z-[500] bg-[#0f172a]/90 border border-sky-500/50 text-sky-400 p-2 rounded-xl backdrop-blur-sm shadow-lg flex items-center gap-2"
+            onClick={() => document.getElementById('mobile-right-panel').classList.toggle('translate-y-full')}
+          >
+            <Layers size={16} /> <span className="text-xs font-semibold">Dashboard</span>
+          </button>
           {/* Legend overlay */}
           <div className="absolute bottom-4 left-4 z-[500] bg-[#0f172a]/90 border border-[#1E293B] rounded-xl p-3 backdrop-blur-sm">
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Grid Status</div>
@@ -187,8 +195,20 @@ export default function CommandCenterPage() {
           </div>
         </div>
 
-        {/* Right Panel — 40% */}
-        <div className="flex-1 flex flex-col gap-3 overflow-y-auto p-4 bg-[#020617]">
+        {/* Right Panel */}
+        <div 
+          id="mobile-right-panel"
+          className="absolute inset-x-0 bottom-0 top-16 md:top-0 md:relative md:flex-1 flex flex-col gap-3 overflow-y-auto p-4 bg-[#020617] md:bg-[#020617] 
+                     transform translate-y-full md:translate-y-0 transition-transform duration-300 ease-in-out z-[600] md:z-auto"
+        >
+          {/* Close button on mobile */}
+          <button 
+            className="md:hidden sticky top-0 left-0 bg-sky-500/10 text-sky-400 p-2 rounded-xl border border-sky-500/20 mb-2 font-medium text-xs flex justify-center w-full"
+            onClick={() => document.getElementById('mobile-right-panel').classList.add('translate-y-full')}
+          >
+            Close Dashboard
+          </button>
+          
           {/* KPI Ribbon */}
           <div>
             <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Live KPIs</div>
