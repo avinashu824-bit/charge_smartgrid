@@ -117,19 +117,19 @@ export default function Sidebar() {
       </aside>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden flex shrink-0 bg-[#0f172a] border-t border-[#1E293B] items-center justify-around py-2 px-2 safe-area-inset-bottom z-50">
+      <nav className="md:hidden flex shrink-0 bg-[#0f172a] border-t border-[#1E293B] items-center gap-2 py-2 px-3 safe-area-inset-bottom z-50 overflow-x-auto w-full max-w-full order-last no-scrollbar snap-x">
         {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 p-2 rounded-xl transition-all ${
-                isActive ? 'text-sky-400' : 'text-slate-500 hover:text-slate-300'
+              `flex flex-col items-center justify-center gap-1 p-2 rounded-xl transition-all min-w-[70px] ${
+                isActive ? 'text-sky-400 bg-sky-500/10' : 'text-slate-500 hover:text-slate-300'
               }`
             }
           >
             <Icon size={20} strokeWidth={2} />
-            <span className="text-[9px] font-medium truncate max-w-[60px] text-center">{label}</span>
+            <span className="text-[10px] font-medium truncate w-full text-center">{label}</span>
           </NavLink>
         ))}
       </nav>

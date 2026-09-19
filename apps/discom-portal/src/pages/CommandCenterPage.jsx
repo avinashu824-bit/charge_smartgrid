@@ -111,36 +111,39 @@ export default function CommandCenterPage() {
 
   return (
     <div className="flex flex-col h-full gap-0 overflow-hidden">
-      {/* ── Top toolbar ─────────────────────────────── */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#1E293B] bg-[#0f172a] shrink-0">
-        <div className="flex items-center gap-2">
-          <Radio className="w-4 h-4 text-sky-400 animate-pulse" />
-          <span className="text-white font-semibold text-sm">Live Grid Command Center</span>
-          <span className="text-[10px] text-slate-500 ml-2">Updated {lastUpdated.toLocaleTimeString('en-IN')}</span>
+      {/* ── Header ───────────────────────────────────── */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 px-4 md:px-6 py-4 border-b border-[#1E293B] bg-[#0f172a] shrink-0 w-full overflow-hidden">
+        <div className="flex items-center gap-3 min-w-0">
+          <Activity className="w-5 h-5 text-sky-400 shrink-0" />
+          <div className="truncate">
+            <h1 className="text-base font-bold text-white leading-tight truncate">Live Grid Command Center</h1>
+            <p className="text-[11px] text-slate-500 truncate">Updated {lastUpdated.toLocaleTimeString('en-IN')} · DISCOM Grid Control</p>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          {/* Status filter */}
+
+        {/* View Toggles & Actions */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar w-full max-w-full md:w-auto snap-x">
           {['ALL', 'GREEN', 'YELLOW', 'RED'].map(s => (
             <button
               key={s}
               onClick={() => setSelectedStatus(s)}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all tracking-wider shrink-0 ${
                 selectedStatus === s
                   ? s === 'GREEN' ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                   : s === 'YELLOW' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
                   : s === 'RED' ? 'bg-red-500/20 text-red-400 border border-red-500/30'
                   : 'bg-sky-500/20 text-sky-400 border border-sky-500/30'
-                  : 'text-slate-500 hover:text-slate-300 border border-transparent'
+                  : 'text-slate-400 hover:bg-[#1E293B]/50 border border-transparent'
               }`}
             >
               {s}
             </button>
           ))}
-          <div className="w-px h-4 bg-[#334155] mx-1" />
+          <div className="w-px h-4 bg-[#334155] mx-1 shrink-0" />
           {/* Layer toggles */}
           <button
             onClick={() => setShowZones(!showZones)}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium border transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all shrink-0 ${
               showZones ? 'border-sky-500/40 text-sky-400 bg-sky-500/10' : 'border-[#334155] text-slate-400 hover:text-slate-200'
             }`}
           >
